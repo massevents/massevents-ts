@@ -3,7 +3,7 @@ import logo from './logo.svg'
 
 export default create({
   base: 'light',
-  brandTitle: 'YipYip',
+  brandTitle: 'Mass Events',
   brandImage: logo,
 
   appBg: '#F5F3ED',

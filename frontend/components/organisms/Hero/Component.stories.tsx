@@ -24,7 +24,7 @@ Default.args = {
                     "_key": "e8338ce7a81d",
                     "_type": "span",
                     "marks": [],
-                    "text": "YipYip is al 10 jaar een "
+                    "text": "Mass Events is al 10 jaar een "
                 },
                 {
                     "_key": "9eac40b601c0",

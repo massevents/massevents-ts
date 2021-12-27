@@ -75,14 +75,14 @@ export default function Footer (): JSX.Element {
         <h4 className={style.contactTitle}>Neem contact met ons op</h4>
         <div className={style.contactColumn}>
           <p>
-            <b>YipYip B.V.</b>
+            <b>Mass Events B.V.</b>
           </p>
           <p>
             Schiehavenkade 264 – 266 <br />
             3024EZ Rotterdam
           </p>
           <p>
-            <InternalOrExternalLink href='mailto:info@yipyip.nl'>info@yipyip.nl</InternalOrExternalLink><br />
+            <InternalOrExternalLink href='mailto:info@massevents.nl'>info@massevents.nl</InternalOrExternalLink><br />
             +31 (0)10 - 763 0 763
           </p>
           <p>
