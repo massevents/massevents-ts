@@ -1,0 +1,97 @@
+.mainNavigationWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-column: 2 / -2;
+  overflow: hidden;
+  padding-block-start: 1.6rem;
+  padding-block-end: 1.6rem;
+
+  & svg {
+    width: var(--grid-1x);
+  }
+}
+
+.linkList {
+  padding: 0;
+  margin: 0;
+
+  & li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    margin-inline-end: 5.6rem;
+    font-family: var(--font-family-secondary);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+    position: relative;
+
+    &:last-child {
+      margin-inline-end: 0;
+    }
+
+    & a {
+      color: var(--color-dark);
+    }
+
+    & span {
+      display: grid;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 50%;
+      background-color: var(--color-red-500);
+      color: var(--color-white-100);
+      place-items: center;
+      transform: translate(100%, -50%);
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+    }
+  }
+}
+
+.linkPink {
+  &.active {
+    color: var(--color-pink-500);
+  }
+
+  &:hover {
+    color: var(--color-pink-500);
+  }
+}
+
+.linkGreen {
+  &.active {
+    color: var(--color-green-500);
+  }
+
+  &:hover {
+    color: var(--color-green-500);
+  }
+}
+
+.linkBlue {
+  &.active {
+    color: var(--color-blue-500);
+  }
+
+  &:hover {
+    color: var(--color-blue-500);
+  }
+}
+
+.linkRed {
+  &.active {
+    color: var(--color-red-500);
+  }
+
+  &:hover {
+    color: var(--color-red-500);
+  }
+}

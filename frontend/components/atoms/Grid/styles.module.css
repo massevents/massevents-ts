@@ -1,0 +1,37 @@
+
+.grid {
+  --grid-column-count: 12;
+  --column-gap: 1.5rem;
+  --grid-padding: 1.5rem;
+
+  display: grid;
+  grid-template-columns: var(--grid-padding) repeat(var(--grid-column-count), 1fr) var(--grid-padding);
+  grid-column-gap: var(--column-gap);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+
+  @media (width >= 768px) {
+    --column-gap: 3rem;
+    --grid-padding: 3rem;
+  }
+
+  @media (width >= 1440px) {
+    --grid-padding: calc((100vw - 144rem) / 2);
+  }
+}
+
+.noPadding {
+  grid-template-columns: repeat(var(--grid-column-count), 1fr);
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+
+  @media (width >= 768px) {
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+  }
+
+  @media (width >= 1440) {
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+  }
+}

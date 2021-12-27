@@ -1,0 +1,11 @@
+overwrite: true
+schema:
+  - ${WEBSITE_API_ORIGIN:https://hagk2r3y.api.sanity.io}${WEBSITE_API_PATH:/v1/graphql/production/default}
+documents: '**/*.cms.graphql'
+generates:
+  generated/graphql-request.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-graphql-request'
+      - 'fragment-matcher'

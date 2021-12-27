@@ -1,0 +1,70 @@
+
+.button {
+  text-decoration: none;
+  color: var(--color-white-100);
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  height: 4.8rem;
+  margin: 0;
+  border-radius: 2.4rem;
+  transition: color 0.2s linear, background-color 0.2s linear;
+  width: 100%;
+  padding-inline-start: 3rem;
+  padding-inline-end: 3rem;
+  padding-block-start: 1.5rem;
+  padding-block-end: 1.3rem;
+  font-family: var(--font-family-secondary-bold);
+  font-weight: normal;
+  font-size: 1.6rem;
+  box-shadow: var(--shadow);
+
+  &:hover {
+    color: var(--color-white-100);
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    background-color: var(--color-white-100);
+    color: var(--color-grey-500);
+    cursor: not-allowed;
+  }
+
+  @media (width >= 768px) {
+    width: auto;
+  }
+}
+
+.buttonPrimary {
+  &:not(:disabled) {
+    background: linear-gradient(180deg, #ef3a85 0%, #dd367b 100%);
+  }
+}
+
+.buttonBlank {
+  &:not(:disabled) {
+    background-color: var(--color-white-100);
+    color: var(--color-pink-500);
+  }
+}
+
+.buttonGradient {
+  &:not(:disabled) {
+    background: radial-gradient(38.76% 393.6% at 106.65% 16.67%, rgba(33, 254, 217, 0.72) 10.71%, rgba(33, 254, 217, 0) 100%), linear-gradient(96.99deg, rgba(152, 64, 235, 0) 32.23%, rgba(145, 64, 242, 0.66) 97.14%), radial-gradient(188.07% 451.73% at -59.4% 0%, #ff317f 29.75%, #4684fb 69.35%), #ef3a85;
+  }
+}
+
+.buttonTextGradient {
+  &:not(:disabled) {
+    background-color: var(--color-white-100);
+
+    & span {
+      background: radial-gradient(38.76% 393.6% at 106.65% 16.67%, rgba(33, 254, 217, 0.72) 10.71%, rgba(33, 254, 217, 0) 100%), linear-gradient(96.99deg, rgba(152, 64, 235, 0) 32.23%, rgba(145, 64, 242, 0.66) 97.14%), radial-gradient(188.07% 451.73% at -59.4% 0%, #ff317f 29.75%, #4684fb 69.35%), #ef3a85;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+}

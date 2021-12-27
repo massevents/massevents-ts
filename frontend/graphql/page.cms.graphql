@@ -1,0 +1,15 @@
+query Page($slug: String) {
+    allPage(where: { slug: { current: { eq: $slug } } }) {
+        _key
+        _type
+        slug {
+          current
+        }
+        title
+        color
+        blocks {
+            ...Hero
+            ...Masonry
+        }
+    }
+}

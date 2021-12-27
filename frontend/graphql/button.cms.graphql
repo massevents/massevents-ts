@@ -1,0 +1,7 @@
+fragment Button on Button {
+  _key
+  _type
+  label
+  path
+  buttonType
+}

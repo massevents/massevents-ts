@@ -1,0 +1,43 @@
+/* stylelint-disable no-descending-specificity */
+.link {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  background: none;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  color: var(--color-pink-500);
+
+  & svg {
+    transition: transform 350ms ease-out;
+    transform: translateX(0);
+  }
+
+  &:not(:disabled) {
+    &:hover {
+      color: var(--color-pink-700);
+
+      & svg {
+        transform: translateX(50%);
+      }
+    }
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    color: var(--color-grey-500);
+    cursor: not-allowed;
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+.label {
+  font-size: 1.8rem;
+  font-family: var(--font-family-secondary-bold);
+  line-height: 2.1rem;
+  padding-block-start: 0.2rem;
+  margin-inline-end: 0.8rem;
+}

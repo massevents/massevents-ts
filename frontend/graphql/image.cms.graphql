@@ -1,0 +1,14 @@
+fragment Image on Image {
+    _key
+    _type
+  asset{
+   ...ImageSource
+  }
+}
+
+fragment ImageSource on SanityImageAsset {
+  _key
+  _type
+  url
+  altText
+}

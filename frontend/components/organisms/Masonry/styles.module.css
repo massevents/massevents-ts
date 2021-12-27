@@ -1,0 +1,141 @@
+.masonry {
+  margin-block-end: 8rem;
+}
+
+.grid {
+  --column-gap: 1.5rem;
+  --grid-column-count: 12;
+
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-column-count), 1fr);
+  grid-column-gap: var(--column-gap);
+  grid-row-gap: var(--column-gap);
+  grid-column: 2 / -2;
+  align-items: center;
+
+  @media (width >= 768px) {
+    --column-gap: 3rem;
+  }
+
+  & img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bgBlock {
+  grid-row: 1;
+  grid-column: 1 / 8;
+}
+
+.bgBlockWrapper {
+  padding-bottom: calc((390 / 660) * 100%);
+  transform: translateY(6rem);
+}
+
+.bgBlockPink {
+  & .bgBlockWrapper {
+    background-color: var(--color-pink-500);
+  }
+}
+
+.bgBlockGreen {
+  & .bgBlockWrapper {
+    background-color: var(--color-green-500);
+  }
+}
+
+.bgBlockRed {
+  & .bgBlockWrapper {
+    background-color: var(--color-red-500);
+  }
+}
+
+.bgBlockBlue {
+  & .bgBlockWrapper {
+    background-color: var(--color-blue-500);
+  }
+}
+
+.leftPhoto {
+  grid-column: 1 / 7;
+  grid-row: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.leftPhotoWrapper {
+  --column-gap: 1.5rem;
+
+  position: relative;
+  padding-bottom: calc((390 / 580) * 100%);
+  height: 0;
+  min-width: calc(100% + var(--column-gap));
+  box-shadow: 0 60px 45px -50px rgba(7, 50, 97, 0.2), 0 90px 25px -90px rgba(7, 50, 97, 0.4);
+
+  @media (width >= 768px) {
+    --column-gap: 3rem;
+  }
+}
+
+.rightCol {
+  --grid-column-count: 6;
+
+  grid-column: 7 / -1;
+  grid-row: 1;
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-column-count), 1fr);
+  grid-column-gap: var(--column-gap);
+  grid-row-gap: var(--column-gap);
+
+  @media (width >= 768px) {
+    --column-gap: 3rem;
+  }
+}
+
+.rightTopPhoto {
+  position: relative;
+  grid-column: 1 / -1;
+}
+
+.rightTopPhotoWrapper {
+  --column-gap: 1.5rem;
+
+  position: relative;
+  padding-bottom: calc((500 / 580) * 100%);
+  height: 0;
+  min-width: calc(100% + var(--column-gap));
+  box-shadow: 0 60px 45px -50px rgba(7, 50, 97, 0.2), 0 90px 25px -90px rgba(7, 50, 97, 0.4);
+
+  @media (width >= 768px) {
+    --column-gap: 3rem;
+  }
+}
+
+.rightBottomPhoto {
+  position: relative;
+  grid-column: 1 / -2;
+}
+
+.rightBottomPhotoWrapper {
+  --column-gap: 1.5rem;
+
+  position: relative;
+  padding-bottom: calc((354 / 415) * 100%);
+  height: 0;
+  max-width: calc(100% - var(--column-gap));
+  box-shadow: 0 60px 45px -50px rgba(7, 50, 97, 0.2), 0 90px 25px -90px rgba(7, 50, 97, 0.4);
+
+  @media (width >= 768px) {
+    --column-gap: 3rem;
+  }
+}

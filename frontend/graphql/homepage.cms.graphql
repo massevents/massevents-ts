@@ -1,0 +1,13 @@
+query Homepage {
+    Page(id: "homepage"){
+        
+        _key
+        _type
+        title
+        color
+        blocks {
+            ...Hero
+            ...Masonry
+        }
+    }
+}

@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "ITCAvantGardeW04-Bold";
+  src: url("/fonts/AvantGardeW04-Bold.eot");
+  src:
+    url("/fonts/AvantGardeW04-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/AvantGardeW04-Bold.woff2") format("woff2"),
+    url("/fonts/AvantGardeW04-Bold.woff") format("woff"),
+    url("/fonts/AvantGardeW04-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AvantGardeMdITCTT";
+  src:
+    url("/fonts/AvantGardeMdITCTT.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/AvantGardeMdITCTT.woff") format("woff"),
+    url("/fonts/AvantGardeMdITCTT.ttf") format("truetype"),
+    url("/fonts/AvantGardeMdITCTT.svg#AvantGardeMdITCTT") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
