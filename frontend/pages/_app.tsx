@@ -14,7 +14,6 @@ export default function App (props: AppProps): JSX.Element {
   return (
     <>
       <props.Component {...props.pageProps} />
-      Test
       <DefaultMetatags />
       <Favicons />
     </>

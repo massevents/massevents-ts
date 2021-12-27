@@ -1,0 +1,13 @@
+{
+  "name": "default",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prepare": "is-ci || husky install"
+  },
+  "devDependencies": {
+    "husky": "^7.0.2",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0"
+  }
+}

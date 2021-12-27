@@ -1,0 +1,19 @@
+query SiteConfig($id:ID!){
+  SiteConfig(id: $id){
+    _id
+    title
+    url
+    mainNavigation{
+      _key
+      _type
+      linkType
+      internalLink{
+        ...PageRoute
+      }
+      externalLink{
+      	url
+        label
+      }
+    }
+  }
+}

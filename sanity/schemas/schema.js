@@ -5,17 +5,18 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Documents
-import homepage from './documents/homepage';
 import page from './documents/page';
+import siteConfig from './documents/siteConfig';
 
 // Fields
-import hero from './fields/hero';
-import masonry from './fields/masonry';
-import richText from './fields/richText';
 import button from './fields/button';
 
 // Objects
-import blocks from './objects/blocks';
+// import blocks from './objects/blocks';
+import InternalExternalLink  from './objects/InternalExternalLink';
+import ExternalLink  from './objects/ExternalLink';
+import seo from './objects/seo';
+import route from './objects/route';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,12 +25,13 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    homepage,
+    InternalExternalLink,
+    ExternalLink,
+    siteConfig,
     page, 
-    hero,
-    masonry,
-    richText,
+    seo,
+    route,
     button,
-    blocks
+    // blocks
   ]),
 })

@@ -3,6 +3,7 @@ export default {
   name: 'page',
   type: 'document',
   fields: [
+
     {
       title: 'Slug',
       name: 'slug',
@@ -21,22 +22,25 @@ export default {
         name: 'title',
         validation: (rule: any) => rule.required(),
     },
+    // { type: 'blocks', name: 'blocks' },
     {
-        type: 'string',
-        name: 'color',
-        validation: (rule: any) => rule.required(),
-        options: {
-          list: [
-            { title: 'Pink', value: 'pink' },
-            { title: 'Green', value: 'green' },
-          ],
-        },
+      type: 'seo',
+      name: 'seo',
+      title: 'SEO',
+      validation: (rule: any) => rule.required(),
     },
-    { type: 'blocks', name: 'blocks' },
+    {
+      type: 'route',
+      name: 'route',
+      title: 'route',
+      validation: (rule: any) => rule.required(),
+    },
   ],
+
   preview: {
     select: {
       title: 'title',
+      media: 'seo.openGraphImage',
     },
   },
 };

@@ -16,8 +16,6 @@ export type Scalars = {
   Date: any;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: any;
-  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSON: any;
 };
 
 
@@ -44,7 +42,6 @@ export type Button = {
   _type?: Maybe<Scalars['String']>;
   label?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
-  buttonType?: Maybe<Scalars['String']>;
 };
 
 export type ButtonFilter = {
@@ -52,7 +49,6 @@ export type ButtonFilter = {
   _type?: Maybe<StringFilter>;
   label?: Maybe<StringFilter>;
   path?: Maybe<StringFilter>;
-  buttonType?: Maybe<StringFilter>;
 };
 
 export type ButtonSorting = {
@@ -60,7 +56,6 @@ export type ButtonSorting = {
   _type?: Maybe<SortOrder>;
   label?: Maybe<SortOrder>;
   path?: Maybe<SortOrder>;
-  buttonType?: Maybe<SortOrder>;
 };
 
 
@@ -127,6 +122,28 @@ export type DocumentSorting = {
   _rev?: Maybe<SortOrder>;
 };
 
+export type ExternalLink = {
+  __typename?: 'ExternalLink';
+  _key?: Maybe<Scalars['String']>;
+  _type?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+};
+
+export type ExternalLinkFilter = {
+  _key?: Maybe<StringFilter>;
+  _type?: Maybe<StringFilter>;
+  url?: Maybe<StringFilter>;
+  label?: Maybe<StringFilter>;
+};
+
+export type ExternalLinkSorting = {
+  _key?: Maybe<SortOrder>;
+  _type?: Maybe<SortOrder>;
+  url?: Maybe<SortOrder>;
+  label?: Maybe<SortOrder>;
+};
+
 export type File = {
   __typename?: 'File';
   _key?: Maybe<Scalars['String']>;
@@ -185,77 +202,6 @@ export type GeopointSorting = {
   alt?: Maybe<SortOrder>;
 };
 
-export type Hero = {
-  __typename?: 'Hero';
-  _key?: Maybe<Scalars['String']>;
-  _type?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  coloredPart?: Maybe<Scalars['String']>;
-  descriptionRaw?: Maybe<Scalars['JSON']>;
-  buttons?: Maybe<Array<Maybe<Button>>>;
-};
-
-export type HeroFilter = {
-  _key?: Maybe<StringFilter>;
-  _type?: Maybe<StringFilter>;
-  title?: Maybe<StringFilter>;
-  coloredPart?: Maybe<StringFilter>;
-};
-
-export type HeroOrMasonry = Hero | Masonry;
-
-export type HeroSorting = {
-  _key?: Maybe<SortOrder>;
-  _type?: Maybe<SortOrder>;
-  title?: Maybe<SortOrder>;
-  coloredPart?: Maybe<SortOrder>;
-};
-
-export type Homepage = Document & {
-  __typename?: 'Homepage';
-  /** Document ID */
-  _id?: Maybe<Scalars['ID']>;
-  /** Document type */
-  _type?: Maybe<Scalars['String']>;
-  /** Date the document was created */
-  _createdAt?: Maybe<Scalars['DateTime']>;
-  /** Date the document was last modified */
-  _updatedAt?: Maybe<Scalars['DateTime']>;
-  /** Current document revision */
-  _rev?: Maybe<Scalars['String']>;
-  _key?: Maybe<Scalars['String']>;
-  slug?: Maybe<Slug>;
-  title?: Maybe<Scalars['String']>;
-  color?: Maybe<Scalars['String']>;
-  blocks?: Maybe<Array<Maybe<HeroOrMasonry>>>;
-};
-
-export type HomepageFilter = {
-  /** Apply filters on document level */
-  _?: Maybe<Sanity_DocumentFilter>;
-  _id?: Maybe<IdFilter>;
-  _type?: Maybe<StringFilter>;
-  _createdAt?: Maybe<DatetimeFilter>;
-  _updatedAt?: Maybe<DatetimeFilter>;
-  _rev?: Maybe<StringFilter>;
-  _key?: Maybe<StringFilter>;
-  slug?: Maybe<SlugFilter>;
-  title?: Maybe<StringFilter>;
-  color?: Maybe<StringFilter>;
-};
-
-export type HomepageSorting = {
-  _id?: Maybe<SortOrder>;
-  _type?: Maybe<SortOrder>;
-  _createdAt?: Maybe<SortOrder>;
-  _updatedAt?: Maybe<SortOrder>;
-  _rev?: Maybe<SortOrder>;
-  _key?: Maybe<SortOrder>;
-  slug?: Maybe<SlugSorting>;
-  title?: Maybe<SortOrder>;
-  color?: Maybe<SortOrder>;
-};
-
 export type IdFilter = {
   /** Checks if the value is equal to the given input. */
   eq?: Maybe<Scalars['ID']>;
@@ -306,30 +252,29 @@ export type IntFilter = {
   lte?: Maybe<Scalars['Int']>;
 };
 
-
-export type Masonry = {
-  __typename?: 'Masonry';
+export type InternalExternalLink = {
+  __typename?: 'InternalExternalLink';
   _key?: Maybe<Scalars['String']>;
   _type?: Maybe<Scalars['String']>;
-  photoLeft?: Maybe<Image>;
-  photoRightTop?: Maybe<Image>;
-  photoRightBottom?: Maybe<Image>;
+  linkType?: Maybe<Scalars['String']>;
+  /** Select the page */
+  internalLink?: Maybe<Page>;
+  externalLink?: Maybe<ExternalLink>;
 };
 
-export type MasonryFilter = {
+export type InternalExternalLinkFilter = {
   _key?: Maybe<StringFilter>;
   _type?: Maybe<StringFilter>;
-  photoLeft?: Maybe<ImageFilter>;
-  photoRightTop?: Maybe<ImageFilter>;
-  photoRightBottom?: Maybe<ImageFilter>;
+  linkType?: Maybe<StringFilter>;
+  internalLink?: Maybe<PageFilter>;
+  externalLink?: Maybe<ExternalLinkFilter>;
 };
 
-export type MasonrySorting = {
+export type InternalExternalLinkSorting = {
   _key?: Maybe<SortOrder>;
   _type?: Maybe<SortOrder>;
-  photoLeft?: Maybe<ImageSorting>;
-  photoRightTop?: Maybe<ImageSorting>;
-  photoRightBottom?: Maybe<ImageSorting>;
+  linkType?: Maybe<SortOrder>;
+  externalLink?: Maybe<ExternalLinkSorting>;
 };
 
 export type Page = Document & {
@@ -347,8 +292,8 @@ export type Page = Document & {
   _key?: Maybe<Scalars['String']>;
   slug?: Maybe<Slug>;
   title?: Maybe<Scalars['String']>;
-  color?: Maybe<Scalars['String']>;
-  blocks?: Maybe<Array<Maybe<HeroOrMasonry>>>;
+  seo?: Maybe<Seo>;
+  route?: Maybe<Route>;
 };
 
 export type PageFilter = {
@@ -362,7 +307,8 @@ export type PageFilter = {
   _key?: Maybe<StringFilter>;
   slug?: Maybe<SlugFilter>;
   title?: Maybe<StringFilter>;
-  color?: Maybe<StringFilter>;
+  seo?: Maybe<SeoFilter>;
+  route?: Maybe<RouteFilter>;
 };
 
 export type PageSorting = {
@@ -374,17 +320,18 @@ export type PageSorting = {
   _key?: Maybe<SortOrder>;
   slug?: Maybe<SlugSorting>;
   title?: Maybe<SortOrder>;
-  color?: Maybe<SortOrder>;
+  seo?: Maybe<SeoSorting>;
+  route?: Maybe<RouteSorting>;
 };
 
 export type RootQuery = {
   __typename?: 'RootQuery';
-  Homepage?: Maybe<Homepage>;
+  SiteConfig?: Maybe<SiteConfig>;
   Page?: Maybe<Page>;
   SanityImageAsset?: Maybe<SanityImageAsset>;
   SanityFileAsset?: Maybe<SanityFileAsset>;
   Document?: Maybe<Document>;
-  allHomepage: Array<Homepage>;
+  allSiteConfig: Array<SiteConfig>;
   allPage: Array<Page>;
   allSanityImageAsset: Array<SanityImageAsset>;
   allSanityFileAsset: Array<SanityFileAsset>;
@@ -392,7 +339,7 @@ export type RootQuery = {
 };
 
 
-export type RootQueryHomepageArgs = {
+export type RootQuerySiteConfigArgs = {
   id: Scalars['ID'];
 };
 
@@ -417,9 +364,9 @@ export type RootQueryDocumentArgs = {
 };
 
 
-export type RootQueryAllHomepageArgs = {
-  where?: Maybe<HomepageFilter>;
-  sort?: Maybe<Array<HomepageSorting>>;
+export type RootQueryAllSiteConfigArgs = {
+  where?: Maybe<SiteConfigFilter>;
+  sort?: Maybe<Array<SiteConfigSorting>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
 };
@@ -454,6 +401,30 @@ export type RootQueryAllDocumentArgs = {
   sort?: Maybe<Array<DocumentSorting>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
+};
+
+export type Route = {
+  __typename?: 'Route';
+  _key?: Maybe<Scalars['String']>;
+  _type?: Maybe<Scalars['String']>;
+  /** For search engines. Will be added to /sitemap.xml */
+  includeInSitemap?: Maybe<Scalars['Boolean']>;
+  /** Hide this route for search engines */
+  disallowRobots?: Maybe<Scalars['Boolean']>;
+};
+
+export type RouteFilter = {
+  _key?: Maybe<StringFilter>;
+  _type?: Maybe<StringFilter>;
+  includeInSitemap?: Maybe<BooleanFilter>;
+  disallowRobots?: Maybe<BooleanFilter>;
+};
+
+export type RouteSorting = {
+  _key?: Maybe<SortOrder>;
+  _type?: Maybe<SortOrder>;
+  includeInSitemap?: Maybe<SortOrder>;
+  disallowRobots?: Maybe<SortOrder>;
 };
 
 export type SanityAssetSourceData = {
@@ -828,6 +799,75 @@ export type Sanity_DocumentFilter = {
   is_draft?: Maybe<Scalars['Boolean']>;
 };
 
+export type Seo = {
+  __typename?: 'Seo';
+  _key?: Maybe<Scalars['String']>;
+  _type?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  /** This description populates meta-tags on the webpage */
+  description?: Maybe<Scalars['String']>;
+  openGraphImage?: Maybe<Image>;
+};
+
+export type SeoFilter = {
+  _key?: Maybe<StringFilter>;
+  _type?: Maybe<StringFilter>;
+  title?: Maybe<StringFilter>;
+  description?: Maybe<StringFilter>;
+  openGraphImage?: Maybe<ImageFilter>;
+};
+
+export type SeoSorting = {
+  _key?: Maybe<SortOrder>;
+  _type?: Maybe<SortOrder>;
+  title?: Maybe<SortOrder>;
+  description?: Maybe<SortOrder>;
+  openGraphImage?: Maybe<ImageSorting>;
+};
+
+export type SiteConfig = Document & {
+  __typename?: 'SiteConfig';
+  /** Document ID */
+  _id?: Maybe<Scalars['ID']>;
+  /** Document type */
+  _type?: Maybe<Scalars['String']>;
+  /** Date the document was created */
+  _createdAt?: Maybe<Scalars['DateTime']>;
+  /** Date the document was last modified */
+  _updatedAt?: Maybe<Scalars['DateTime']>;
+  /** Current document revision */
+  _rev?: Maybe<Scalars['String']>;
+  _key?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  /** The main site url. Used to create canonical url */
+  url?: Maybe<Scalars['String']>;
+  mainNavigation?: Maybe<Array<Maybe<InternalExternalLink>>>;
+};
+
+export type SiteConfigFilter = {
+  /** Apply filters on document level */
+  _?: Maybe<Sanity_DocumentFilter>;
+  _id?: Maybe<IdFilter>;
+  _type?: Maybe<StringFilter>;
+  _createdAt?: Maybe<DatetimeFilter>;
+  _updatedAt?: Maybe<DatetimeFilter>;
+  _rev?: Maybe<StringFilter>;
+  _key?: Maybe<StringFilter>;
+  title?: Maybe<StringFilter>;
+  url?: Maybe<StringFilter>;
+};
+
+export type SiteConfigSorting = {
+  _id?: Maybe<SortOrder>;
+  _type?: Maybe<SortOrder>;
+  _createdAt?: Maybe<SortOrder>;
+  _updatedAt?: Maybe<SortOrder>;
+  _rev?: Maybe<SortOrder>;
+  _key?: Maybe<SortOrder>;
+  title?: Maybe<SortOrder>;
+  url?: Maybe<SortOrder>;
+};
+
 export type Slug = {
   __typename?: 'Slug';
   _key?: Maybe<Scalars['String']>;
@@ -873,38 +913,6 @@ export type StringFilter = {
   nin?: Maybe<Array<Scalars['String']>>;
 };
 
-export type ButtonFragment = (
-  { __typename?: 'Button' }
-  & Pick<Button, '_key' | '_type' | 'label' | 'path' | 'buttonType'>
-);
-
-export type HeroFragment = (
-  { __typename?: 'Hero' }
-  & Pick<Hero, '_key' | '_type' | 'title' | 'coloredPart' | 'descriptionRaw'>
-  & { buttons?: Maybe<Array<Maybe<(
-    { __typename?: 'Button' }
-    & ButtonFragment
-  )>>> }
-);
-
-export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type HomepageQuery = (
-  { __typename?: 'RootQuery' }
-  & { Page?: Maybe<(
-    { __typename?: 'Page' }
-    & Pick<Page, '_key' | '_type' | 'title' | 'color'>
-    & { blocks?: Maybe<Array<Maybe<(
-      { __typename?: 'Hero' }
-      & HeroFragment
-    ) | (
-      { __typename?: 'Masonry' }
-      & MasonryFragment
-    )>>> }
-  )> }
-);
-
 export type ImageFragment = (
   { __typename?: 'Image' }
   & Pick<Image, '_key' | '_type'>
@@ -919,21 +927,6 @@ export type ImageSourceFragment = (
   & Pick<SanityImageAsset, '_key' | '_type' | 'url' | 'altText'>
 );
 
-export type MasonryFragment = (
-  { __typename?: 'Masonry' }
-  & Pick<Masonry, '_key' | '_type'>
-  & { photoLeft?: Maybe<(
-    { __typename?: 'Image' }
-    & ImageFragment
-  )>, photoRightTop?: Maybe<(
-    { __typename?: 'Image' }
-    & ImageFragment
-  )>, photoRightBottom?: Maybe<(
-    { __typename?: 'Image' }
-    & ImageFragment
-  )> }
-);
-
 export type PageQueryVariables = Exact<{
   slug?: Maybe<Scalars['String']>;
 }>;
@@ -943,41 +936,89 @@ export type PageQuery = (
   { __typename?: 'RootQuery' }
   & { allPage: Array<(
     { __typename?: 'Page' }
-    & Pick<Page, '_key' | '_type' | 'title' | 'color'>
+    & Pick<Page, '_key' | '_type' | 'title'>
     & { slug?: Maybe<(
       { __typename?: 'Slug' }
       & Pick<Slug, 'current'>
-    )>, blocks?: Maybe<Array<Maybe<(
-      { __typename?: 'Hero' }
-      & HeroFragment
-    ) | (
-      { __typename?: 'Masonry' }
-      & MasonryFragment
+    )> }
+  )> }
+);
+
+export type PageFragment = (
+  { __typename?: 'Page' }
+  & Pick<Page, 'title'>
+);
+
+export type PageRouteFragment = (
+  { __typename?: 'Page' }
+  & Pick<Page, 'title'>
+  & { slug?: Maybe<(
+    { __typename?: 'Slug' }
+    & Pick<Slug, 'current'>
+  )> }
+);
+
+export type PageTeaserFragment = (
+  { __typename?: 'Page' }
+  & Pick<Page, 'title'>
+);
+
+export type SeoFragment = (
+  { __typename?: 'Seo' }
+  & Pick<Seo, 'title' | 'description'>
+  & { openGraphImage?: Maybe<(
+    { __typename?: 'Image' }
+    & ImageFragment
+  )> }
+);
+
+export type SiteConfigQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type SiteConfigQuery = (
+  { __typename?: 'RootQuery' }
+  & { SiteConfig?: Maybe<(
+    { __typename?: 'SiteConfig' }
+    & Pick<SiteConfig, '_id' | 'title' | 'url'>
+    & { mainNavigation?: Maybe<Array<Maybe<(
+      { __typename?: 'InternalExternalLink' }
+      & Pick<InternalExternalLink, '_key' | '_type' | 'linkType'>
+      & { internalLink?: Maybe<(
+        { __typename?: 'Page' }
+        & PageRouteFragment
+      )>, externalLink?: Maybe<(
+        { __typename?: 'ExternalLink' }
+        & Pick<ExternalLink, 'url' | 'label'>
+      )> }
     )>>> }
   )> }
 );
 
-export const ButtonFragmentDoc = gql`
-    fragment Button on Button {
-  _key
-  _type
-  label
-  path
-  buttonType
+export type SlugFragment = (
+  { __typename?: 'Slug' }
+  & Pick<Slug, 'current'>
+);
+
+export const PageFragmentDoc = gql`
+    fragment Page on Page {
+  title
 }
     `;
-export const HeroFragmentDoc = gql`
-    fragment Hero on Hero {
-  _key
-  _type
+export const PageRouteFragmentDoc = gql`
+    fragment PageRoute on Page {
   title
-  coloredPart
-  descriptionRaw
-  buttons {
-    ...Button
+  slug {
+    current
   }
 }
-    ${ButtonFragmentDoc}`;
+    `;
+export const PageTeaserFragmentDoc = gql`
+    fragment PageTeaser on Page {
+  title
+}
+    `;
 export const ImageSourceFragmentDoc = gql`
     fragment ImageSource on SanityImageAsset {
   _key
@@ -995,54 +1036,53 @@ export const ImageFragmentDoc = gql`
   }
 }
     ${ImageSourceFragmentDoc}`;
-export const MasonryFragmentDoc = gql`
-    fragment Masonry on Masonry {
-  _key
-  _type
-  photoLeft {
-    ...Image
-  }
-  photoRightTop {
-    ...Image
-  }
-  photoRightBottom {
+export const SeoFragmentDoc = gql`
+    fragment Seo on Seo {
+  title
+  description
+  openGraphImage {
     ...Image
   }
 }
     ${ImageFragmentDoc}`;
-export const HomepageDocument = gql`
-    query Homepage {
-  Page(id: "homepage") {
-    _key
-    _type
-    title
-    color
-    blocks {
-      ...Hero
-      ...Masonry
-    }
-  }
+export const SlugFragmentDoc = gql`
+    fragment Slug on Slug {
+  current
 }
-    ${HeroFragmentDoc}
-${MasonryFragmentDoc}`;
+    `;
 export const PageDocument = gql`
     query Page($slug: String) {
   allPage(where: {slug: {current: {eq: $slug}}}) {
     _key
     _type
+    title
     slug {
       current
     }
+  }
+}
+    `;
+export const SiteConfigDocument = gql`
+    query SiteConfig($id: ID!) {
+  SiteConfig(id: $id) {
+    _id
     title
-    color
-    blocks {
-      ...Hero
-      ...Masonry
+    url
+    mainNavigation {
+      _key
+      _type
+      linkType
+      internalLink {
+        ...PageRoute
+      }
+      externalLink {
+        url
+        label
+      }
     }
   }
 }
-    ${HeroFragmentDoc}
-${MasonryFragmentDoc}`;
+    ${PageRouteFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
 
@@ -1051,11 +1091,11 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    Homepage(variables?: HomepageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<HomepageQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<HomepageQuery>(HomepageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Homepage');
-    },
     Page(variables?: PageQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageQuery>(PageDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Page');
+    },
+    SiteConfig(variables: SiteConfigQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SiteConfigQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SiteConfigQuery>(SiteConfigDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'SiteConfig');
     }
   };
 }
@@ -1069,14 +1109,10 @@ export type Sdk = ReturnType<typeof getSdk>;
       const result: PossibleTypesResultData = {
   "possibleTypes": {
     "Document": [
-      "Homepage",
       "Page",
       "SanityFileAsset",
-      "SanityImageAsset"
-    ],
-    "HeroOrMasonry": [
-      "Hero",
-      "Masonry"
+      "SanityImageAsset",
+      "SiteConfig"
     ]
   }
 };

@@ -9,7 +9,6 @@ import Footer from '@components/organisms/Footer/Component'
 import { PageQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
-import { BlockMapper, PossibleBlock, PossibleColors } from '@components/molecules/BlockMapper/Component'
 import { hasValue } from '@misc/helpers'
 import { useRouter } from 'next/router'
 
@@ -77,10 +76,10 @@ export default function Page (
       />
       <MainNavigation />
 
-      {hasValue(pageData?.blocks) && pageData?.blocks.map((block: PossibleBlock | null) => {
+      {/* {hasValue(pageData?.blocks) && pageData?.blocks.map((block: PossibleBlock | null) => {
         if (!hasValue(block)) return null
         return (<BlockMapper key={block._key} block={block} color={pageData?.color as PossibleColors} />)
-      })}
+      })} */}
 
       <Footer />
     </>

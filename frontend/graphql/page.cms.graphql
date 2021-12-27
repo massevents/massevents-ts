@@ -1,15 +1,25 @@
 query Page($slug: String) {
-    allPage(where: { slug: { current: { eq: $slug } } }) {
-        _key
-        _type
-        slug {
-          current
-        }
-        title
-        color
-        blocks {
-            ...Hero
-            ...Masonry
-        }
+  allPage(where: { slug: { current: { eq: $slug } } }) {
+    _key
+    _type
+    title
+    slug {
+      current
     }
+  }
+}
+
+fragment Page on Page {
+  title
+}
+
+fragment PageRoute on Page {
+  title
+  slug {
+    current
+  }
+}
+
+fragment PageTeaser on Page {
+  title
 }

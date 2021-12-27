@@ -1,0 +1,7 @@
+fragment Seo on Seo {
+  title
+  description
+  openGraphImage {
+      ...Image
+  }
+}
