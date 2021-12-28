@@ -1,0 +1,22 @@
+query TeamMember($slug: String) {
+  allTeamMember(where: { slug: { current: { eq: $slug } } }) {
+    _key
+    _type
+    ...TeamMember
+  }
+}
+
+fragment TeamMember on TeamMember {
+  name
+  slug {
+    current
+  }
+  email
+  roles
+  image {
+    ...Image
+  }
+  seo {
+    ...Seo
+  }
+}

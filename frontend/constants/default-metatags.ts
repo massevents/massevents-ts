@@ -7,7 +7,7 @@ export interface MetatagsProps {
   description?: string
   og_image?: string
   twitterHandler?: string
-  hrefLangLinks: Array<{
+  hrefLangLinks?: Array<{
     language: string
     url: string
   }>

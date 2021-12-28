@@ -1,0 +1,31 @@
+query Project($slug: String) {
+  allProject(where: { slug: { current: { eq: $slug } } }) {
+    _key
+    _type
+    ...Project
+  }
+}
+
+fragment Project on Project {
+  title
+  slug {
+    current
+  }
+  seo {
+    ...Seo
+  }
+}
+
+fragment ProjectRoute on Project {
+  title
+  slug {
+    current
+  }
+}
+
+fragment ProjectTeaser on Project {
+  title
+  slug {
+    current
+  }
+}

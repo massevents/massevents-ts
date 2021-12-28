@@ -28,4 +28,20 @@ export default {
       type: "ExternalLink",
     },
   ],
+  preview: {
+    select: {
+      title: "linkType",
+      externalLink: "externalLink",
+      internalLink: "internalLink.title"
+    },
+    prepare: ({title, externalLink, internalLink}) => {
+      const isExternalLink = title === 'externalLink'
+      const externalLinkTitle = externalLink?.label ?? ''
+      const internalLinkTitle = internalLink ?? ''
+
+      return {
+        title: `${isExternalLink ? externalLinkTitle : internalLinkTitle} (${isExternalLink ? 'External' : 'Internal'})`,
+      }
+    }
+  },
 };

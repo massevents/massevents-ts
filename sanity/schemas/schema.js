@@ -6,7 +6,12 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Documents
 import page from './documents/page';
+import news from './documents/news';
+import redirect from './documents/redirect';
+import project from './documents/project';
+import sponsor from './documents/sponsor';
 import siteConfig from './documents/siteConfig';
+import teamMember from './documents/teamMember';
 
 // Fields
 import button from './fields/button';
@@ -17,6 +22,14 @@ import InternalExternalLink  from './objects/InternalExternalLink';
 import ExternalLink  from './objects/ExternalLink';
 import seo from './objects/seo';
 import route from './objects/route';
+import header from './objects/header';
+import teaser from './objects/teaser';
+import ticketshop from './objects/ticketshop';
+import projectContent from './objects/projectContent';
+import sponsors from './objects/sponsors';
+import activities from './objects/activities';
+import socialMedia from './objects/socialMedia';
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -27,11 +40,23 @@ export default createSchema({
   types: schemaTypes.concat([
     InternalExternalLink,
     ExternalLink,
+    redirect,
     siteConfig,
+    project,
     page, 
     seo,
+    news,
+    header,
     route,
     button,
+    teamMember,
+    activities,
+    sponsor,
+    sponsors,
+    socialMedia,
+    teaser,
+    ticketshop,
+    projectContent,
     // blocks
   ]),
 })

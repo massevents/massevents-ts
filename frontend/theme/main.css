@@ -6,9 +6,7 @@
   /* CSS Variables for the XXX theme */
 
   /* Fonts */
-  --font-family-primary: "Assistant", helvetica, arial, verdana, droid-sans, sans-serif;
-  --font-family-secondary: "AvantGardeMdITCTT", helvertica, sans-serif;
-  --font-family-secondary-bold: "ITCAvantGardeW04-Bold", helvetica, sans-serif;
+  --font-family-primary: "Karla", helvetica, arial, verdana, droid-sans, sans-serif;
 
   /* Global variables */
   --text-color: var(--color-grey-900);

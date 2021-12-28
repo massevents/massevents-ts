@@ -22,6 +22,12 @@ export default {
         name: 'title',
         validation: (rule: any) => rule.required(),
     },
+
+    {
+      type: 'header',
+      name: 'Header',
+      validation: (rule: any) => rule.required(),
+  },
     // { type: 'blocks', name: 'blocks' },
     {
       type: 'seo',
@@ -32,7 +38,7 @@ export default {
     {
       type: 'route',
       name: 'route',
-      title: 'route',
+      title: 'Misc.',
       validation: (rule: any) => rule.required(),
     },
   ],

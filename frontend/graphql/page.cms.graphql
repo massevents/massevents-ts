@@ -2,15 +2,18 @@ query Page($slug: String) {
   allPage(where: { slug: { current: { eq: $slug } } }) {
     _key
     _type
-    title
-    slug {
-      current
-    }
+    ...Page
   }
 }
 
 fragment Page on Page {
   title
+  slug {
+    current
+  }
+  seo {
+    ...Seo
+  }
 }
 
 fragment PageRoute on Page {
@@ -22,4 +25,7 @@ fragment PageRoute on Page {
 
 fragment PageTeaser on Page {
   title
+  slug {
+    current
+  }
 }

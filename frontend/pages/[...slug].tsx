@@ -69,9 +69,8 @@ export default function Page (
     <>
       <Metatags
         {...{
-          title: pageData.title ?? '',
-          description: 'Page description',
-          hrefLangLinks: [{ language: 'en', url: 'https://some.url/en' }]
+          title: pageData.seo?.title ?? '',
+          description: pageData.seo?.description ?? ''
         }}
       />
       <MainNavigation />

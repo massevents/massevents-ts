@@ -1,0 +1,21 @@
+query Sponsor($slug: String) {
+  allSponsor(where: { slug: { current: { eq: $slug } } }) {
+    _key
+    _type
+    ...Sponsor
+  }
+}
+
+fragment Sponsor on Sponsor {
+  title
+  slug {
+    current
+  }
+  url
+  logo {
+    ...Image
+  }
+  seo {
+    ...Seo
+  }
+}

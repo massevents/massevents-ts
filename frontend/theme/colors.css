@@ -1,46 +1,8 @@
 :root {
-  /* Primary */
-  --color-pink-500: #ef3a85;
-  --color-pink-700: #b32b64;
-  --color-white-100: #fff;
-  --color-grey-300: #f2f5f8;
-  --color-grey-500: #acacac;
-  --color-grey-700: #848687;
-  --color-grey-900: #332e32;
-
-  /* Secondary */
-  --color-blue-500: #2fbced;
-  --color-green-500: #bed62f;
-  --color-orange-500: #fa9c06;
-  --color-red-500: #ed1c24;
-
-  /* Tertiary */
-  --color-red-pastel-500: #ffdcdc;
-  --color-orange-pastel-500: #fff3dc;
-  --color-green-pastel-300: #f3ffdc;
-  --color-green-pastel-400: #dcffdc;
-  --color-green-pastel-500: #dcfff3;
-  --color-blue-pastel-500: #dcf3ff;
-  --color-purple-pastel-500: #dcdcff;
-  --color-lavender-pastel-500: #f3dcff;
-  --color-pink-pastel-500: #ffdcf3;
-
-  /* Other stuff */
-  --shadow: 0 1.5rem 2rem -1rem #b7c2ce;
-}
-
-.span-pink {
-  color: var(--color-pink-500);
-}
-
-.span-green {
-  color: var(--color-green-500);
-}
-
-.span-blue {
-  color: var(--color-blue-500);
-}
-
-.span-red {
-  color: var(--color-red-500);
+  --color-black: #000;
+  --color-gray: #c0c0c0;
+  --color-white: #fff;
+  --color-accent: #f15a4e;
+  --color-secondary: indigo;
+  --color-neutral: #f6f6f6;
 }

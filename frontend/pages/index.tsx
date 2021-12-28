@@ -59,9 +59,8 @@ export default function Homepage (props: { homepage: PageQuery
     <>
       <Metatags
         {...{
-          title: 'Page title',
-          description: 'Page description',
-          hrefLangLinks: [{ language: 'en', url: 'https://some.url/en' }]
+          title: pageData.seo?.title ?? '',
+          description: pageData.seo?.description ?? ''
         }}
       />
       {((settings?.mainNavigation) != null) && (<MainNavigation menu={settings?.mainNavigation} />)}

@@ -19,7 +19,7 @@ export default function MainNavigation (props: Props): JSX.Element {
       <div className={style.mainNavigationWrapper}>
         <Link href='/'>
           <a>
-            <Logo />
+            <Logo isColor={false} />
           </a>
         </Link>
         <nav>

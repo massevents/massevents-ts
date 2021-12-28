@@ -1,0 +1,31 @@
+query News($slug: String) {
+  allNews(where: { slug: { current: { eq: $slug } } }) {
+    _key
+    _type
+    ...News
+  }
+}
+
+fragment News on News {
+  title
+  slug {
+    current
+  }
+  seo {
+    ...Seo
+  }
+}
+
+fragment NewsRoute on News {
+  title
+  slug {
+    current
+  }
+}
+
+fragment NewsTeaser on News {
+  title
+  slug {
+    current
+  }
+}

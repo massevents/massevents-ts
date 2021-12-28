@@ -2,7 +2,12 @@
 export default {
   name: 'route',
   type: 'object',
-  title: 'Route',
+  title: 'Misc.',
+  options: {
+    collapsible: true,
+    collapsed: true,
+    columns: 1
+  },
   fields: [
     {
       name: 'includeInSitemap',
