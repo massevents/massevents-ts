@@ -4,9 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { DEFAULT_NOT_FOUND_REVALIDATE, DEFAULT_REVALIDATE } from '@constants/revalidate'
 
 import Metatags from '@components/molecules/Metatags/Component'
-import MainNavigation from '@components/organisms/MainNavigation/Component'
-import Footer from '@components/organisms/Footer/Component'
-import { SponsorQuery } from '@generated/graphql-request'
+import { SiteConfigQuery, SponsorQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
 import { hasValue } from '@misc/helpers'
@@ -21,6 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<{
   sponsor: SponsorQuery['allSponsor']
+  siteConfig: SiteConfigQuery
 }> = async ctx => {
   const origin = getWebsiteApiOrigin()
   const path = getWebsiteApiPath()
@@ -38,6 +37,7 @@ export const getStaticProps: GetStaticProps<{
   const sponsor = await sdk.Sponsor({
     slug: `sponsor/${slug}`
   })
+  const siteSettings = await sdk.SiteConfig({ id: 'site-config' })
 
   if (sponsor.allSponsor == null) {
     return {
@@ -48,7 +48,8 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: {
-      sponsor: sponsor.allSponsor
+      sponsor: sponsor.allSponsor,
+      siteConfig: siteSettings
     },
     revalidate: DEFAULT_REVALIDATE
   }
@@ -72,14 +73,14 @@ export default function Page (
           description: pageData.seo?.description ?? ''
         }}
       />
-      <MainNavigation />
+
+      <h1>Sponsor detail: {pageData.title}</h1>
 
       {/* {hasValue(pageData?.blocks) && pageData?.blocks.map((block: PossibleBlock | null) => {
         if (!hasValue(block)) return null
         return (<BlockMapper key={block._key} block={block} color={pageData?.color as PossibleColors} />)
       })} */}
 
-      <Footer />
     </>
   )
 }

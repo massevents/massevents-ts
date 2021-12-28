@@ -33,7 +33,7 @@ export default function MainNavigation (props: Props): JSX.Element {
                 </li>
               ) : (link != null) && link.linkType === 'internalLink' && (link.internalLink != null) ? (
                 <li key={link.internalLink?.slug?.current}>
-                  <InternalOrExternalLink href={link.internalLink?.slug?.current ?? ''}>
+                  <InternalOrExternalLink href={`${process.env.NEXT_PUBLIC_WEBSITE_URL ?? ''}/${link.internalLink?.slug?.current ?? ''}`}>
                     {link.internalLink?.title ?? ''}
                   </InternalOrExternalLink>
                 </li>

@@ -6,7 +6,7 @@ import { DEFAULT_NOT_FOUND_REVALIDATE, DEFAULT_REVALIDATE } from '@constants/rev
 import Metatags from '@components/molecules/Metatags/Component'
 import MainNavigation from '@components/organisms/MainNavigation/Component'
 import Footer from '@components/organisms/Footer/Component'
-import { TeamMemberQuery } from '@generated/graphql-request'
+import { SiteConfigQuery, TeamMemberQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
 import { hasValue } from '@misc/helpers'
@@ -21,6 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<{
   team: TeamMemberQuery['allTeamMember']
+  siteConfig: SiteConfigQuery
 }> = async ctx => {
   const origin = getWebsiteApiOrigin()
   const path = getWebsiteApiPath()
@@ -38,6 +39,7 @@ export const getStaticProps: GetStaticProps<{
   const team = await sdk.TeamMember({
     slug: `team/${slug}`
   })
+  const siteSettings = await sdk.SiteConfig({ id: 'site-config' })
 
   if (team.allTeamMember == null) {
     return {
@@ -48,7 +50,8 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: {
-      team: team.allTeamMember
+      team: team.allTeamMember,
+      siteConfig: siteSettings
     },
     revalidate: DEFAULT_REVALIDATE
   }
@@ -72,14 +75,14 @@ export default function Page (
           description: pageData.seo?.description ?? ''
         }}
       />
-      <MainNavigation />
+
+<h1>Team member detail: {pageData.name}</h1>
 
       {/* {hasValue(pageData?.blocks) && pageData?.blocks.map((block: PossibleBlock | null) => {
         if (!hasValue(block)) return null
         return (<BlockMapper key={block._key} block={block} color={pageData?.color as PossibleColors} />)
       })} */}
 
-      <Footer />
     </>
   )
 }

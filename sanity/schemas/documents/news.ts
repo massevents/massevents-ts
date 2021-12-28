@@ -13,7 +13,7 @@ export default {
         maxLength: 200, 
         slugify: (input) => {
           const sluggified = input.toLowerCase().replace(/\s+/g, "-").slice(0, 200);
-          return `news/${sluggified}`
+          return `nieuws/${sluggified}`
         }
       }
     }, 

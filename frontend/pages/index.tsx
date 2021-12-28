@@ -4,8 +4,6 @@ import { GetStaticProps } from 'next'
 import { DEFAULT_NOT_FOUND_REVALIDATE, DEFAULT_REVALIDATE } from '@constants/revalidate'
 
 import Metatags from '@components/molecules/Metatags/Component'
-import MainNavigation from '@components/organisms/MainNavigation/Component'
-import Footer from '@components/organisms/Footer/Component'
 import { PageQuery, SiteConfigQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
@@ -27,8 +25,6 @@ export const getStaticProps: GetStaticProps<{
 
   const siteSettings = await sdk.SiteConfig({ id: 'site-config' })
 
-  console.log(siteSettings)
-
   if (page.allPage == null) {
     return {
       notFound: true,
@@ -48,7 +44,6 @@ export const getStaticProps: GetStaticProps<{
 export default function Homepage (props: { homepage: PageQuery
   siteConfig: SiteConfigQuery }): JSX.Element {
   const pageData = props.homepage.allPage[0]
-  const settings = props.siteConfig.SiteConfig
 
   const router = useRouter()
   if (router.isFallback) {
@@ -63,15 +58,12 @@ export default function Homepage (props: { homepage: PageQuery
           description: pageData.seo?.description ?? ''
         }}
       />
-      {((settings?.mainNavigation) != null) && (<MainNavigation menu={settings?.mainNavigation} />)}
 
       <h1>{pageData.title}</h1>
       {/* {hasValue(pageData?.blocks) && pageData?.blocks.map((block: PossibleBlock | null) => {
         if (!hasValue(block)) return null
         return (<BlockMapper key={block._key} block={block} color={pageData?.color as PossibleColors} />)
       })} */}
-
-      <Footer />
     </>
   )
 }
