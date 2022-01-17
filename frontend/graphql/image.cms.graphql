@@ -11,4 +11,9 @@ fragment ImageSource on SanityImageAsset {
   _type
   url
   altText
+  metadata { 
+    dimensions {
+      aspectRatio
+    }
+  }
 }

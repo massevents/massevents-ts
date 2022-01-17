@@ -16,6 +16,13 @@ export default {
       description: "The main site url. Used to create canonical url",
     },
     {
+      title: "email",
+      name: "email",
+      type: "string",
+      description: "Main contact emailaddress",
+    },
+    
+    {
       title: "Main navigation",
       name: "mainNavigation",
       description: "Select pages for the top menu",

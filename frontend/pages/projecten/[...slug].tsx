@@ -4,11 +4,12 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { DEFAULT_NOT_FOUND_REVALIDATE, DEFAULT_REVALIDATE } from '@constants/revalidate'
 
 import Metatags from '@components/molecules/Metatags/Component'
-import { ProjectQuery, SiteConfigQuery } from '@generated/graphql-request'
+import { Header, ProjectQuery, SiteConfigQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
 import { hasValue } from '@misc/helpers'
 import { useRouter } from 'next/router'
+import ProjectDetail from '@components/templates/ProjectDetail/Component'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -20,6 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{
   project: ProjectQuery['allProject']
   siteConfig: SiteConfigQuery
+  header: Header
 
 }> = async ctx => {
   const origin = getWebsiteApiOrigin()
@@ -36,7 +38,7 @@ export const getStaticProps: GetStaticProps<{
   }
 
   const project = await sdk.Project({
-    slug: `project/${slug}`
+    slug: `projecten/${slug}`
   })
   const siteSettings = await sdk.SiteConfig({ id: 'site-config' })
 
@@ -50,14 +52,17 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       project: project.allProject,
-      siteConfig: siteSettings
+      siteConfig: siteSettings,
+      header: project.allProject[0].header
     },
     revalidate: DEFAULT_REVALIDATE
   }
 }
 
 export default function Page(
-  props: { project: ProjectQuery['allProject'] }
+  props: { project: ProjectQuery['allProject'],
+  siteConfig: SiteConfigQuery,
+  header: Header }
 ): JSX.Element {
   const router = useRouter()
 
@@ -74,13 +79,9 @@ export default function Page(
           description: pageData.seo?.description ?? ''
         }}
       />
+      
+      <ProjectDetail project={pageData} />
 
-      <h1>Project detail: {pageData.title}</h1>
-
-      {/* {hasValue(pageData?.blocks) && pageData?.blocks.map((block: PossibleBlock | null) => {
-        if (!hasValue(block)) return null
-        return (<BlockMapper key={block._key} block={block} color={pageData?.color as PossibleColors} />)
-      })} */}
 
     </>
   )

@@ -1,0 +1,15 @@
+fragment NewsOverview on NewsOverview {
+  _key
+  _type
+  title
+  subtitle
+  newsType
+  button_enable
+  button_label
+  button_url {
+    ...PageRoute
+  }
+  news {
+    ...NewsTeaser
+  }
+}

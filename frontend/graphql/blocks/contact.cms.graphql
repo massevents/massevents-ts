@@ -1,0 +1,10 @@
+fragment Contact on Contact {
+  _key
+  _type
+  title
+  subtitle
+  address
+  team {
+    ...TeamMember
+  }
+}

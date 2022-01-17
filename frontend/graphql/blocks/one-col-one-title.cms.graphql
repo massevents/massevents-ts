@@ -1,0 +1,7 @@
+fragment OneColOneTitle on OneColOneTitle {
+  _key
+  _type
+  title
+  subtitle
+  col
+}

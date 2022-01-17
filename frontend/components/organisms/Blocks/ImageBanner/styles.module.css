@@ -1,0 +1,6 @@
+.wrapper {
+  grid-column: 1 / -1;
+  position: relative;
+  width: 100%;
+  margin-block-end: 4rem;
+}

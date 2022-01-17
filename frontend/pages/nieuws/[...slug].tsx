@@ -4,11 +4,13 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { DEFAULT_NOT_FOUND_REVALIDATE, DEFAULT_REVALIDATE } from '@constants/revalidate'
 
 import Metatags from '@components/molecules/Metatags/Component'
-import { NewsQuery, SiteConfigQuery } from '@generated/graphql-request'
+import { Header, NewsQuery, SiteConfigQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
 import { hasValue } from '@misc/helpers'
 import { useRouter } from 'next/router'
+import ReactMarkdown from 'react-markdown'
+import NewsDetail from '@components/templates/NewsDetail/Component'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -20,6 +22,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{
   news: NewsQuery['allNews']
   siteConfig: SiteConfigQuery
+  header: Header
 }> = async ctx => {
   const origin = getWebsiteApiOrigin()
   const path = getWebsiteApiPath()
@@ -27,6 +30,7 @@ export const getStaticProps: GetStaticProps<{
 
   const sdk = createGraphqlRequestSdk(new URL(endpoint))
   const slug = hasValue(ctx.params?.slug) ? ctx.params?.slug[0] : ''
+
   if (typeof slug !== 'string' || slug === '') {
     return {
       notFound: true,
@@ -49,18 +53,23 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       news: news.allNews,
-      siteConfig: siteSettings
+      siteConfig: siteSettings,
+      header: news.allNews[0].header
     },
     revalidate: DEFAULT_REVALIDATE
   }
 }
 
-export default function Page (
-  props: { news: NewsQuery['allNews'] }
+export default function Page(
+  props: {
+    news: NewsQuery['allNews'],
+    siteConfig: SiteConfigQuery,
+    header: Header
+  }
 ): JSX.Element {
   const router = useRouter()
 
-  if (router.isFallback) {  
+  if (router.isFallback) {
     return <p>Loading</p>
   }
   const pageData = props.news[0]
@@ -73,13 +82,7 @@ export default function Page (
           description: pageData.seo?.description ?? ''
         }}
       />
-
-<h1>Nieuws detail: {pageData.title}</h1>
-      {/* {hasValue(pageData?.blocks) && pageData?.blocks.map((block: PossibleBlock | null) => {
-        if (!hasValue(block)) return null
-        return (<BlockMapper key={block._key} block={block} color={pageData?.color as PossibleColors} />)
-      })} */}
-
+      <NewsDetail news={pageData} />
     </>
   )
 }

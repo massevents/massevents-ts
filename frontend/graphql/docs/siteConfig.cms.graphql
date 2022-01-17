@@ -3,6 +3,7 @@ query SiteConfig($id:ID!){
     _id
     title
     url
+    email
     mainNavigation{
       _key
       _type

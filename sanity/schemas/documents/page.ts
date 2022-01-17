@@ -25,10 +25,9 @@ export default {
 
     {
       type: 'header',
-      name: 'Header',
+      name: 'header',
       validation: (rule: any) => rule.required(),
   },
-    // { type: 'blocks', name: 'blocks' },
     {
       type: 'seo',
       name: 'seo',
@@ -41,6 +40,8 @@ export default {
       title: 'Misc.',
       validation: (rule: any) => rule.required(),
     },
+    { type: 'blocks', name: 'blocks' },
+
   ],
 
   preview: {

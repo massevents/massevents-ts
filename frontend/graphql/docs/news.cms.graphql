@@ -1,0 +1,75 @@
+query News($slug: String) {
+  allNews(where: { slug: { current: { eq: $slug } } }) {
+    _key
+    _type
+    ...News
+  }
+}
+
+query RecentNews {
+  allNews(limit: 3) {
+    _key
+    _type
+    ...NewsTeaser
+  }
+}
+
+query AllNews {
+  allNews {
+    _key
+    _type
+    ...NewsTeaser
+  }
+}
+
+fragment News on News {
+  title
+  _updatedAt
+  _createdAt
+  slug {
+    current
+  }
+  Teaser {
+    ...Teaser
+  }
+  header{
+    ...Header
+  }
+  seo {
+    ...Seo
+  }
+  description
+  author {
+    ...TeamMember
+  }
+}
+
+fragment NewsRoute on News {
+  title
+  slug {
+    current
+  }
+  Teaser {
+    ...Teaser
+  }
+}
+
+fragment NewsTeaser on News {
+  title
+  slug {
+    current
+  }
+  Teaser {
+    ...Teaser
+  }
+}
+
+fragment Teaser on Teaser {
+  _key
+  _type
+  title
+  description
+  imageSrc {
+    ...Image
+  }
+}

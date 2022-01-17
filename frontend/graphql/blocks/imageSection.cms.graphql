@@ -1,0 +1,10 @@
+fragment ImageSection on ImageSection {
+  _key
+  _type
+  link {
+    ...InternalExternalLink
+  }
+  image {
+    ...Image
+  }
+}

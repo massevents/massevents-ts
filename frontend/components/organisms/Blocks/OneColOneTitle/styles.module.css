@@ -1,0 +1,26 @@
+.wrapper {
+  grid-column: 1 / -1;
+  position: relative;
+  width: 100%;
+  padding-block-end: 12rem;
+}
+
+.titleBar {
+  grid-column: 1 / -1;
+}
+
+.col {
+  grid-column: 1 / -1;
+  padding-block-start: 2rem;
+  padding-block-end: 2rem;
+
+  & h2 {
+    font-family: Rubik, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-orange);
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 1.2;
+  }
+}

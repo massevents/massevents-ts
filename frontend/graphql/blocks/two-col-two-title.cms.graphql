@@ -1,0 +1,10 @@
+fragment TwoColTwoTitle on TwoColTwoTitle {
+  _key
+  _type
+  leftTitle
+  leftSubtitle
+  rightTitle
+  rightSubtitle
+  leftCol
+  rightCol
+}

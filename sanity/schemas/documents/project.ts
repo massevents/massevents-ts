@@ -13,7 +13,7 @@ export default {
         maxLength: 200, 
         slugify: (input) => {
           const sluggified = input.toLowerCase().replace(/\s+/g, "-").slice(0, 200);
-          return `project/${sluggified}`
+          return `projecten/${sluggified}`
         }
       }
     }, 
@@ -29,7 +29,7 @@ export default {
     },
     {
         type: 'ticketshop',
-        name: 'Ticketshop',
+        name: 'ticketshop',
     },
     {
         type: 'projectContent',
@@ -43,32 +43,32 @@ export default {
     },
     {
         type: 'header',
-        name: 'Header',
+        name: 'header',
         validation: (rule: any) => rule.required(),
     },
     {
         type: 'teaser',
-        name: 'Teaser',
+        name: 'teaser',
         validation: (rule: any) => rule.required(),
     },
     {
         type: 'sponsors',
-        name: 'Sponsors',
+        name: 'sponsors',
         validation: (rule: any) => rule.required(),
     },
     {
         type: 'activities',
-        name: 'Activiteiten',
+        name: 'activiteiten',
         validation: (rule: any) => rule.required(),
     },
 
     {
-      name: 'logoSrc',
+      name: 'logo',
       type: 'image',
       title: 'Logoafbeelding'
     },
     {
-      name: 'posterSrc',
+      name: 'poster',
       type: 'image',
       title: 'Poster afbeelding'
     },

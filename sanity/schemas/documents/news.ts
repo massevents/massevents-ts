@@ -41,7 +41,7 @@ export default {
     },
     {
         type: 'header',
-        name: 'Header',
+        name: 'header',
         validation: (rule: any) => rule.required(),
     },
     {

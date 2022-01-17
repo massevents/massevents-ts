@@ -1,0 +1,95 @@
+query Project($slug: String) {
+  allProject(where: { slug: { current: { eq: $slug } } }) {
+    _key
+    _type
+    ...Project
+  }
+}
+
+query RecentProjects {
+  allProject(limit: 3) {
+    _key
+    _type
+    ...ProjectTeaser
+  }
+}
+
+query AllProjects {
+  allProject {
+    _key
+    _type
+    ...ProjectTeaser
+  }
+}
+
+
+fragment Project on Project {
+  title
+  slug {
+    current
+  }
+  description
+  header {
+    ...Header
+  }
+  seo {
+    ...Seo
+  }
+  projectContent {
+    shortDescriptionTitle
+    shortDescription
+    massEventsTitle
+    massEvents
+    customContent
+  }
+  photoAlbum {
+    ...Image
+  }
+  activiteiten {
+    titleActivities
+    activities
+  }
+  sponsors {
+    titleSponsors
+    partners {
+      type
+      sponsorType
+      sponsors {
+        ...Sponsor
+      }
+    }
+  }
+  socialMedia {
+    facebookUrl
+    instagramUrl
+    linkedinUrl
+    spotifyUrl
+    websiteUrl
+  }
+  ticketshop {
+    _key
+    _type
+    url
+    buttonLabel
+  }
+  teaser {
+    ...Teaser
+  }
+}
+
+fragment ProjectRoute on Project {
+  title
+  slug {
+    current
+  }
+}
+
+fragment ProjectTeaser on Project {
+  title
+  slug {
+    current
+  }
+  teaser {
+    ...Teaser
+  }
+}

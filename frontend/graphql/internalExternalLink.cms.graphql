@@ -1,0 +1,9 @@
+fragment InternalExternalLink on InternalExternalLink {
+  internalLink{
+        ...PageRoute
+      }
+      externalLink{
+      	url
+        label
+      }
+}

@@ -4,7 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { DEFAULT_NOT_FOUND_REVALIDATE, DEFAULT_REVALIDATE } from '@constants/revalidate'
 
 import Metatags from '@components/molecules/Metatags/Component'
-import { SiteConfigQuery, SponsorQuery } from '@generated/graphql-request'
+import { Header, SiteConfigQuery, SponsorQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
 import { hasValue } from '@misc/helpers'
@@ -20,6 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{
   sponsor: SponsorQuery['allSponsor']
   siteConfig: SiteConfigQuery
+  header: Header
 }> = async ctx => {
   const origin = getWebsiteApiOrigin()
   const path = getWebsiteApiPath()
@@ -49,14 +50,17 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       sponsor: sponsor.allSponsor,
-      siteConfig: siteSettings
+      siteConfig: siteSettings,
+      header: sponsor.allSponsor[0].header
     },
     revalidate: DEFAULT_REVALIDATE
   }
 }
 
 export default function Page (
-  props: { sponsor: SponsorQuery['allSponsor'] }
+  props: { sponsor: SponsorQuery['allSponsor'] ,
+  siteConfig: SiteConfigQuery,
+  header: Header}
 ): JSX.Element {
   const router = useRouter()
 

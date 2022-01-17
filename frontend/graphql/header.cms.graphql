@@ -1,0 +1,12 @@
+fragment Header on Header {
+  _key
+  _type
+  headerType
+  title
+  subtitle
+  imageSrc {
+    ...Image
+  }
+  videoId
+  delay
+}

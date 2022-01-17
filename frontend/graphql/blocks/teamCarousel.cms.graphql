@@ -1,0 +1,7 @@
+fragment TeamCarousel on TeamCarousel {
+  _key
+  _type
+  people {
+    ...TeamMember
+  }
+}

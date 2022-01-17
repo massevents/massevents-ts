@@ -2,7 +2,7 @@
 export default {
   name: 'sponsors',
   type: 'object',
-  title: 'Sponsors (Nieuwe functionaliteit)',
+  title: 'Sponsors',
   options: {
     collapsible: true,
     collapsed: true,
@@ -19,37 +19,8 @@ export default {
       title: 'Partners',
       type: 'array',
       of: [
-        {
-          name: 'partnerGroup',
-          type: 'object',
-          title: 'Partnergroep',
-          fields: [
-            {
-              name: 'type',
-              title: 'Titel',
-              type: 'string'
-            },
-
-            {
-              name: 'sponsorType',
-              type: 'string',
-              title: 'Type',
-              options: {
-                list: ['photo', 'text'],
-                layout: 'radio',
-                direction: 'horizontal'
-              }
-            },
-            {
-              title: 'Sponsors',
-              name: 'sponsors',
-              type: 'array',
-              of: [{
-                type: 'reference',
-                to: [{type: 'sponsor'}]
-              }]
-            }
-          ]
+        { 
+          type: "partnerGroup"
         }
       ]
     }

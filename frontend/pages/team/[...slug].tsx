@@ -4,9 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { DEFAULT_NOT_FOUND_REVALIDATE, DEFAULT_REVALIDATE } from '@constants/revalidate'
 
 import Metatags from '@components/molecules/Metatags/Component'
-import MainNavigation from '@components/organisms/MainNavigation/Component'
-import Footer from '@components/organisms/Footer/Component'
-import { SiteConfigQuery, TeamMemberQuery } from '@generated/graphql-request'
+import { Header, SiteConfigQuery, TeamMemberQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
 import { hasValue } from '@misc/helpers'
@@ -22,6 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{
   team: TeamMemberQuery['allTeamMember']
   siteConfig: SiteConfigQuery
+  header: Header
 }> = async ctx => {
   const origin = getWebsiteApiOrigin()
   const path = getWebsiteApiPath()
@@ -51,18 +50,23 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       team: team.allTeamMember,
-      siteConfig: siteSettings
+      siteConfig: siteSettings,
+      header: team.allTeamMember[0].header
     },
     revalidate: DEFAULT_REVALIDATE
   }
 }
 
-export default function Page (
-  props: { team: TeamMemberQuery['allTeamMember'] }
+export default function Page(
+  props: {
+    team: TeamMemberQuery['allTeamMember'],
+    siteConfig: SiteConfigQuery,
+    header: Header
+  }
 ): JSX.Element {
   const router = useRouter()
 
-  if (router.isFallback) {  
+  if (router.isFallback) {
     return <p>Loading</p>
   }
   const pageData = props.team[0]
@@ -76,7 +80,7 @@ export default function Page (
         }}
       />
 
-<h1>Team member detail: {pageData.name}</h1>
+      <h1>Team member detail: {pageData.name}</h1>
 
       {/* {hasValue(pageData?.blocks) && pageData?.blocks.map((block: PossibleBlock | null) => {
         if (!hasValue(block)) return null

@@ -1,0 +1,9 @@
+fragment TwoColQuote on TwoColQuote {
+  _key
+  _type
+  title
+  subtitle
+  quote
+  leftCol
+  rightCol
+}

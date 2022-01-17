@@ -1,0 +1,16 @@
+fragment ProjectOverview on ProjectOverview {
+  _key
+  _type
+  headingTitle
+  headingSubTitle
+  projectsType
+  format
+  button_enable
+  button_label
+  button_url {
+    ...PageRoute
+  }
+  projects {
+    ...ProjectTeaser
+  }
+}

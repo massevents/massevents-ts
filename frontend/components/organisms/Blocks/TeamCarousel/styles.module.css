@@ -1,0 +1,26 @@
+.wrapper {
+  grid-column: 1 / -1;
+  position: relative;
+  padding-block-end: 4rem;
+  width: 100%;
+}
+
+.col {
+  grid-column: span 6;
+  padding-block-start: 2rem;
+  padding-block-end: 2rem;
+
+  & > div {
+    margin-block-end: 2.4rem;
+  }
+
+  & h3 {
+    font-family: Rubik, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-orange);
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 1.2;
+  }
+}

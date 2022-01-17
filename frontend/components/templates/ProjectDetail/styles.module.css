@@ -1,0 +1,29 @@
+.wrapper {
+  grid-column: 1 / -1;
+  position: relative;
+  width: 100%;
+}
+
+.titleBar {
+  grid-column: 1 / -1;
+}
+
+.leftCol {
+  grid-column: 1 / 7;
+}
+
+.rightCol {
+  grid-column: 7 / -1;
+}
+
+.gridCol {
+  grid-column: span 6;
+}
+
+.col {
+  grid-column: 1 / -1;
+}
+
+.quote {
+  grid-column: 1 / -1;
+}

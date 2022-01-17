@@ -16,16 +16,19 @@ export default {
         list: [
           { title: "Video", value: "video" },
           { title: "Image", value: "image" },
+          { title: "City", value: "city" },
           { title: "Nothing", value: "nothing" },
         ],
       },
     },
     {
+      hidden: ({ parent }) => parent?.headerType === "nothing" || parent?.headerType === "city",
       name: "title",
       type: "string",
       title: "Header title",
     },
     {
+      hidden: ({ parent }) => parent?.headerType === "nothing" || parent?.headerType === "city",
       name: "subtitle",
       type: "string",
       title: "Header subtitle",
@@ -41,6 +44,12 @@ export default {
       name: "videoId",
       type: "string",
       title: "Youtube id (11 tekens)",
+    },
+    {
+      hidden: ({ parent }) => parent?.headerType !== "video",
+      name: "delay",
+      type: "string",
+      title: "Delay in seconds (not too much)",
     },
   ],
 };

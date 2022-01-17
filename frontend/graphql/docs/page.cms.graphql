@@ -11,8 +11,21 @@ fragment Page on Page {
   slug {
     current
   }
+  header{
+    ...Header
+  }
   seo {
     ...Seo
+  }
+  blocks {
+    ...Contact
+    ...TwoColQuote
+    ...TwoColTwoTitle
+    ...OneColOneTitle
+    ...ImageSection
+    ...NewsOverview
+    ...ProjectOverview
+    ...TeamCarousel
   }
 }
 
