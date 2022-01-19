@@ -1,26 +1,24 @@
 import React from 'react'
 import gridStyle from '@components/atoms/Grid/styles.module.css'
 import style from './styles.module.css'
-import { Contact, News, TeamMember, TwoColQuote, TwoColTwoTitle } from '@generated/graphql-request'
+import { News } from '@generated/graphql-request'
 import ReactMarkdown from 'react-markdown'
 import { hasValue } from '@misc/helpers'
-import clsx from 'clsx'
 import { Image } from '@components/atoms/Image/Component'
-import InternalOrExternalLink from '@lib/link/Component'
-import { FacebookIcon, InstagramIcon, LinkedInIcon, SpotifyIcon } from '@components/atoms/SocialIcon/Component'
-import { Button } from '@components/atoms/Button/Component'
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
 interface Props {
   news: News
 }
 
-export default function NewsDetail(props: Props): JSX.Element {
-const created = new Date(props.news._createdAt);
-const updated = new Date(props.news._createdAt);
+export default function NewsDetail (props: Props): JSX.Element {
+  const created = new Date(props.news._createdAt)
+  const updated = new Date(props.news._createdAt)
 
-const format = (date: any) => {
-  return date.toLocaleDateString("nl-NL")
-}
+  const format = (date: any): string => {
+    return date.toLocaleDateString('nl-NL')
+  }
   return (
     <section>
       <div className={gridStyle.grid}>
@@ -30,10 +28,27 @@ const format = (date: any) => {
 
           <ReactMarkdown>{props.news.description ?? ''}</ReactMarkdown>
 
-          <h1>TODO: add fotoalbum</h1>
+          {hasValue(props.news?.photoAlbum) && (
+            <div className={style.album}>
+              <Swiper
+                spaceBetween={30}
+                slidesPerView={2}
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+              >
+                {props.news?.photoAlbum?.map(photo => {
+                  return (<SwiperSlide key={`${photo?.asset?.url ?? ''}_newsdetail`}><Image src={photo?.asset?.url ?? ''} alt={photo?.asset?.altText ?? ''} objectFit='cover' objectPosition='center center' layout='responsive' width='300' height='200' /></SwiperSlide>)
+                })}
+              </Swiper>
+              <div className={style.albumSwipe}>
+                <img src='/images/swipe.svg' />
+              </div>
+            </div>
+          )}
+
           <small>Laatst gewijzigd op {format(updated)}</small>
+        </div>
       </div>
-      </div>
-    </section >
+    </section>
   )
 }

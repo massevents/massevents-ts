@@ -13,7 +13,7 @@ import Footer from '@components/organisms/Footer/Component'
 import Header from '@components/organisms/Header/Component'
 import { MainPage } from '@components/molecules/MainPage/Component'
 
-export default function App(props: AppProps & { siteConfig: SiteConfigQuery, hasHeader: boolean }): JSX.Element {
+export default function App (props: AppProps & { siteConfig: SiteConfigQuery, hasHeader: boolean }): JSX.Element {
   usePageView()
   useScrollbarWidth()
   const settings = props.pageProps?.siteConfig?.SiteConfig

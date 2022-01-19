@@ -9,7 +9,6 @@ import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
 import { hasValue } from '@misc/helpers'
 import { useRouter } from 'next/router'
-import ReactMarkdown from 'react-markdown'
 import NewsDetail from '@components/templates/NewsDetail/Component'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -60,10 +59,10 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Page(
+export default function Page (
   props: {
-    news: NewsQuery['allNews'],
-    siteConfig: SiteConfigQuery,
+    news: NewsQuery['allNews']
+    siteConfig: SiteConfigQuery
     header: Header
   }
 ): JSX.Element {

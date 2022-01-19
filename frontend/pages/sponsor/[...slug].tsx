@@ -58,13 +58,13 @@ export const getStaticProps: GetStaticProps<{
 }
 
 export default function Page (
-  props: { sponsor: SponsorQuery['allSponsor'] ,
-  siteConfig: SiteConfigQuery,
-  header: Header}
+  props: { sponsor: SponsorQuery['allSponsor']
+    siteConfig: SiteConfigQuery
+    header: Header}
 ): JSX.Element {
   const router = useRouter()
 
-  if (router.isFallback) {  
+  if (router.isFallback) {
     return <p>Loading</p>
   }
   const pageData = props.sponsor[0]

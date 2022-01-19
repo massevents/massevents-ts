@@ -13,15 +13,15 @@ interface Props {
   header: Header
 }
 
-export default function HeaderComponent(props: Props): JSX.Element {
+export default function HeaderComponent (props: Props): JSX.Element {
   // const router = useRouter()
 
-  const [loaded, setLoaded] = React.useState<boolean>(false);
+  const [loaded, setLoaded] = React.useState<boolean>(false)
 
-  const videoUrl = `https://www.youtube.com/embed/${props.header?.videoId}`
+  const videoUrl = `https://www.youtube.com/embed/${props.header?.videoId ?? ''}`
 
-  return props.header?.headerType === 'city' ?
-    (<div className={style.city}><City /></div>) : (
+  return props.header?.headerType === 'city'
+    ? (<div className={style.city}><City /></div>) : (
       <section>
         <div className={gridStyle.grid}>
           <div className={style.videoWrapper}>
@@ -35,8 +35,8 @@ export default function HeaderComponent(props: Props): JSX.Element {
               {props.header?.headerType === 'video' && (
                 <div className={style.videoElement}>
                   <ReactPlayer
-                    height="100%"
-                    width="100%"
+                    height='100%'
+                    width='100%'
                     muted
                     playing
                     loop
@@ -46,17 +46,20 @@ export default function HeaderComponent(props: Props): JSX.Element {
                       youtube: {
                         playerVars: { showinfo: 0, controls: 0, disablekb: 1, modestbranding: 1, start: props.header.delay ?? 0 }
                       }
-                    }} /></div>)}
+                    }}
+                  />
+                </div>)}
 
-              {props.header?.headerType === 'image' && (<Image src='https://i.imgur.com/CQ7fTDW.jpeg' layout='fill' objectFit='cover' objectPosition='center center' />)}
+              {props.header?.headerType === 'image' && (<Image src={props.header?.imageSrc?.asset?.url ?? ''} layout='fill' objectFit='cover' objectPosition='center center' />)}
 
-              {props.header?.headerType === 'video' && (<div className={clsx(style.overlayLoading, loaded && style.overlayLoadingLoaded)}>
-                <div style={{ transitionDelay: '150ms' }} />
-                <div style={{ transitionDelay: '300ms' }} />
-                <div style={{ transitionDelay: '450ms' }} />
-                <div style={{ transitionDelay: '600ms' }} />
-                <div style={{ transitionDelay: '750ms' }} />
-              </div>)}
+              {props.header?.headerType === 'video' && (
+                <div className={clsx(style.overlayLoading, loaded && style.overlayLoadingLoaded)}>
+                  <div style={{ transitionDelay: '150ms' }} />
+                  <div style={{ transitionDelay: '300ms' }} />
+                  <div style={{ transitionDelay: '450ms' }} />
+                  <div style={{ transitionDelay: '600ms' }} />
+                  <div style={{ transitionDelay: '750ms' }} />
+                </div>)}
 
               <div className={style.titleWrapper}>
                 <div className={gridStyle.grid}>
@@ -67,12 +70,10 @@ export default function HeaderComponent(props: Props): JSX.Element {
                 </div>
               </div>
 
-
             </div>
 
-
             {/* <Styled.Video>
-          
+
           <Styled.OverlayLoading className={isLoaded ? `isLoaded` : ``}>
             {panels}
           </Styled.OverlayLoading>
@@ -86,7 +87,8 @@ export default function HeaderComponent(props: Props): JSX.Element {
             </Styled.Section>
           )}
         </Styled.Video> */}
-          </div></div>
-      </section >
+          </div>
+        </div>
+      </section>
     )
 }

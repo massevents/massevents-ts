@@ -2,6 +2,38 @@
   grid-column: 1 / -1;
   position: relative;
   width: 100%;
+
+  & h2 {
+    font-family: Rubik, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-orange);
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: 2.4rem;
+    margin-block-end: 2.4rem;
+  }
+}
+
+.partnersTitle {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-family: Rubik, sans-serif;
+}
+
+.sponsorsActivities {
+  margin: 0 0 2rem;
+  padding: 0;
+
+  & li {
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+    padding: 5px;
+
+    &.textSponsor {
+      background-color: rgb(246, 246, 246);
+    }
+  }
 }
 
 .titleBar {
@@ -26,4 +58,17 @@
 
 .quote {
   grid-column: 1 / -1;
+}
+
+.logoImg {
+  grid-column: 1 / -1;
+}
+
+.album {
+  margin-block-start: 3rem;
+}
+
+.albumSwipe {
+  padding: 2rem;
+  text-align: center;
 }

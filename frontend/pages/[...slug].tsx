@@ -4,7 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { DEFAULT_NOT_FOUND_REVALIDATE, DEFAULT_REVALIDATE } from '@constants/revalidate'
 
 import Metatags from '@components/molecules/Metatags/Component'
-import { Header, Maybe, NewsQuery, NewsTeaserFragment, PageQuery, ProjectQuery, SiteConfigQuery } from '@generated/graphql-request'
+import { Header, NewsQuery, PageQuery, ProjectQuery, SiteConfigQuery } from '@generated/graphql-request'
 import { getWebsiteApiOrigin, getWebsiteApiPath } from '@misc/environments'
 import { createGraphqlRequestSdk } from '@misc/graphql-request-sdk'
 import { hasValue } from '@misc/helpers'
@@ -20,7 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<{
   page: PageQuery['allPage']
-  siteConfig: SiteConfigQuery,
+  siteConfig: SiteConfigQuery
   header: Header
   news?: NewsQuery | null
   projects?: ProjectQuery | null
@@ -52,25 +52,25 @@ export const getStaticProps: GetStaticProps<{
   }
 
   let news: NewsQuery | null = null
-  let projects: ProjectQuery | null = null;
+  let projects: ProjectQuery | null = null
 
   if (hasValue(page.allPage[0].blocks)) {
-    const hasRecentNews = page.allPage[0].blocks.filter((block: any) => block._type === 'newsOverview' && block.newsType === 'recent').length > 0;
+    const hasRecentNews = page.allPage[0].blocks.filter((block: any) => block._type === 'newsOverview' && block.newsType === 'recent').length > 0
     if (hasRecentNews) {
       news = await sdk.RecentNews()
     }
 
-    const hasAllNews = page.allPage[0].blocks.filter((block: any) => block._type === 'newsOverview' && block.newsType === 'all').length > 0;
+    const hasAllNews = page.allPage[0].blocks.filter((block: any) => block._type === 'newsOverview' && block.newsType === 'all').length > 0
     if (hasAllNews) {
       news = await sdk.AllNews()
     }
 
-    const hasRecentProjects = page.allPage[0].blocks.filter((block: any) => block._type === 'projectOverview' && block.projectsType === 'recent').length > 0;
+    const hasRecentProjects = page.allPage[0].blocks.filter((block: any) => block._type === 'projectOverview' && block.projectsType === 'recent').length > 0
     if (hasRecentProjects) {
       projects = await sdk.RecentProjects()
     }
 
-    const hasAllProjects = page.allPage[0].blocks.filter((block: any) => block._type === 'projectOverview' && block.projectsType === 'all').length > 0;
+    const hasAllProjects = page.allPage[0].blocks.filter((block: any) => block._type === 'projectOverview' && block.projectsType === 'all').length > 0
     if (hasAllProjects) {
       projects = await sdk.AllProjects()
     }
@@ -88,11 +88,11 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Page(
+export default function Page (
   props: {
-    page: PageQuery['allPage'],
-    siteConfig: SiteConfigQuery,
-    header: Header,
+    page: PageQuery['allPage']
+    siteConfig: SiteConfigQuery
+    header: Header
     news?: NewsQuery | null
     projects?: ProjectQuery | null
   }
@@ -107,7 +107,7 @@ export default function Page(
 
   return (
     <>
-      {/* 
+      {/*
     <pre>
       {JSON.stringify(props, null, 2)}
     </pre> */}

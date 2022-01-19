@@ -1,18 +1,15 @@
 import React from 'react'
 import gridStyle from '@components/atoms/Grid/styles.module.css'
 import style from './styles.module.css'
-import { Contact, TeamMember, TwoColQuote } from '@generated/graphql-request'
+import { TwoColQuote } from '@generated/graphql-request'
 import ReactMarkdown from 'react-markdown'
-import { hasValue } from '@misc/helpers'
 import clsx from 'clsx'
-
 
 interface Props {
   block: TwoColQuote
 }
 
-export default function TwoColQuoteBlock(props: Props): JSX.Element {
-
+export default function TwoColQuoteBlock (props: Props): JSX.Element {
   return (
     <section>
       <div className={gridStyle.grid}>
@@ -32,6 +29,6 @@ export default function TwoColQuoteBlock(props: Props): JSX.Element {
           </div>
         </div>
       </div>
-    </section >
+    </section>
   )
 }

@@ -10,7 +10,7 @@ import PerformanceMark from '@lib/react-performance-api/performance-mark/Compone
 import { getGTMKey } from '@misc/environments'
 
 export default class MyDocument extends Document {
-  render(): JSX.Element {
+  render (): JSX.Element {
     const containerId = getGTMKey()
 
     return (
@@ -26,8 +26,8 @@ export default class MyDocument extends Document {
           <PerformanceMark name='google-fonts-start' />
 
           <link
-            href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Rubik:wght@400;700&display=swap"
-            rel="stylesheet"
+            href='https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Rubik:wght@400;700&display=swap'
+            rel='stylesheet'
           />
           <PerformanceMark name='google-fonts-end' />
 

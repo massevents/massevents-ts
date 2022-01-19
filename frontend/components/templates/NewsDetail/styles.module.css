@@ -10,3 +10,12 @@
   width: 100%;
   margin-block-end: 5rem;
 }
+
+.album {
+  margin-block-start: 3rem;
+}
+
+.albumSwipe {
+  padding: 2rem;
+  text-align: center;
+}

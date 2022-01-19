@@ -45,6 +45,12 @@ fragment Project on Project {
   photoAlbum {
     ...Image
   }
+  logo {
+    ...Image
+  }
+  poster {
+    ...Image
+  }
   activiteiten {
     titleActivities
     activities
@@ -91,5 +97,9 @@ fragment ProjectTeaser on Project {
   }
   teaser {
     ...Teaser
+  }
+
+  logo {
+    ...Image
   }
 }

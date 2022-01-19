@@ -9,12 +9,11 @@ interface Props {
   block: ImageSection
 }
 
-export default function ImageBanner(props: Props): JSX.Element {
-
+export default function ImageBanner (props: Props): JSX.Element {
   return (
     <section>
       <div className={gridStyle.grid}>
-        <InternalOrExternalLink href={props.block.link?.linkType === 'external' ? props.block.link?.externalLink?.url ?? '' : props.block.link?.internalLink?.slug?.current ?? ''} className={style.wrapper} style={{paddingTop: `calc(100% / ${props.block.image?.asset?.metadata?.dimensions?.aspectRatio})`}}>
+        <InternalOrExternalLink href={props.block.link?.linkType === 'external' ? props.block.link?.externalLink?.url ?? '' : props.block.link?.internalLink?.slug?.current ?? ''} className={style.wrapper} style={{ paddingTop: `calc(100% / ${props.block.image?.asset?.metadata?.dimensions?.aspectRatio ?? ''})` }}>
           <Image
             src={props.block.image?.asset?.url ?? ''}
             alt={props.block.image?.asset?.altText ?? ''}
@@ -24,6 +23,6 @@ export default function ImageBanner(props: Props): JSX.Element {
           />
         </InternalOrExternalLink>
       </div>
-    </section >
+    </section>
   )
 }

@@ -7,14 +7,12 @@ import { hasValue } from '@misc/helpers'
 import clsx from 'clsx'
 import { Button } from '@components/atoms/Button/Component'
 
-
 interface Props {
   block: Contact
   siteConfig: SiteConfigQuery
 }
 
-export default function ContactBlock(props: Props): JSX.Element {
-
+export default function ContactBlock (props: Props): JSX.Element {
   return (
     <section>
       <div className={gridStyle.grid}>
@@ -26,19 +24,28 @@ export default function ContactBlock(props: Props): JSX.Element {
           </div>
           <div className={style.leftCol}>
             <ReactMarkdown>{props.block.address ?? ''}</ReactMarkdown>
-            <Button as="link" href={`mailto:${props.siteConfig?.SiteConfig?.email}`}>Stuur een bericht</Button>
+            <Button as='link' href={`mailto:${props.siteConfig?.SiteConfig?.email ?? ''}`}>Stuur een bericht</Button>
           </div>
           <div className={style.rightCol}>
-            {props.block.team?.map((team: TeamMember | null) => {
+            {props.block.team?.map((team: TeamMember | null, idx: number) => {
               if (!hasValue(team)) return null
               return (
-                <div><h5>{team?.name}</h5><p>{team?.roles}</p><p><a href={`mailto:${team?.email}`} title={`Stuur een email naar ${team?.name}`}>{team?.email}</a></p></div>)
+                <div key={`${idx}_teamMember`}>
+                  <h5>{team?.name}</h5>
+                  <p>{team?.roles}</p>
+                  <p>
+                    <a href={`mailto:${team?.email ?? ''}`} title={`Stuur een email naar ${team?.name ?? ''}`}>
+                      {team?.email}
+                    </a>
+                  </p>
+                </div>
+              )
             })}
           </div>
 
         </div>
 
       </div>
-    </section >
+    </section>
   )
 }

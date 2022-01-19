@@ -59,10 +59,12 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Page(
-  props: { project: ProjectQuery['allProject'],
-  siteConfig: SiteConfigQuery,
-  header: Header }
+export default function Page (
+  props: {
+    project: ProjectQuery['allProject']
+    siteConfig: SiteConfigQuery
+    header: Header
+  }
 ): JSX.Element {
   const router = useRouter()
 
@@ -79,9 +81,8 @@ export default function Page(
           description: pageData.seo?.description ?? ''
         }}
       />
-      
-      <ProjectDetail project={pageData} />
 
+      <ProjectDetail project={pageData} />
 
     </>
   )

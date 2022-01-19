@@ -38,6 +38,9 @@ fragment News on News {
   seo {
     ...Seo
   }
+  photoAlbum{
+    ...Image
+  }
   description
   author {
     ...TeamMember

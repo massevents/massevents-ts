@@ -17,20 +17,20 @@ interface Props {
 export default function MainNavigation (props: Props): JSX.Element {
   const router = useRouter()
 
-  const checkActive = (link: InternalExternalLink) => {
-    let targetPath = `/${link.internalLink?.slug?.current ?? ''}`.replace('//','/')
+  const checkActive = (link: InternalExternalLink): boolean => {
+    const targetPath = `/${link.internalLink?.slug?.current ?? ''}`.replace('//', '/')
     let isActive = router.asPath === targetPath
 
-    if(!isActive){
+    if (!isActive) {
       isActive = router.asPath.startsWith(targetPath) && targetPath !== '/'
     }
     return isActive
   }
-  
+
   return (
     <header className={clsx(gridStyle.grid,
-      (!hasValue(props.isLogoColor) || !props.isLogoColor) && style.isAbsolute)
-    }>
+      (!hasValue(props.isLogoColor) || !props.isLogoColor) && style.isAbsolute)}
+    >
       <div className={style.mainNavigationWrapper}>
         <Link href='/'>
           <a>
@@ -48,7 +48,7 @@ export default function MainNavigation (props: Props): JSX.Element {
                 </li>
               ) : (link != null) && link.linkType === 'internalLink' && (link.internalLink != null) ? (
                 <li key={link.internalLink?.slug?.current}>
-                  <InternalOrExternalLink className={checkActive(link) ? style.isActive : ""} href={`${process.env.NEXT_PUBLIC_WEBSITE_URL ?? ''}/${link.internalLink?.slug?.current ?? ''}`}>
+                  <InternalOrExternalLink className={checkActive(link) ? style.isActive : ''} href={`${process.env.NEXT_PUBLIC_WEBSITE_URL ?? ''}/${link.internalLink?.slug?.current ?? ''}`}>
                     {link.internalLink?.title ?? ''}
                   </InternalOrExternalLink>
                 </li>

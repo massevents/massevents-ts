@@ -7,14 +7,12 @@ import NewsOverviewComponent from '@components/organisms/Blocks/NewsOverview/Com
 import ProjectOverviewComponent from '@components/organisms/Blocks/ProjectOverview/Component'
 import TeamCarouselBlock from '@components/organisms/Blocks/TeamCarousel/Component'
 
-
 import React from 'react'
 import { NewsQuery, ProjectQuery, SiteConfigQuery } from '@generated/graphql-request'
 
-
 interface Props {
-  siteConfig: SiteConfigQuery,
-  block: any,
+  siteConfig: SiteConfigQuery
+  block: any
   news?: NewsQuery | null
   projects?: ProjectQuery | null
 }
@@ -40,10 +38,11 @@ export const BlockMapper = (props: Props): JSX.Element => {
     case 'teamCarousel':
       return (<TeamCarouselBlock block={block} />)
 
-
     default:
-      return (<><p>Some component named <b>{block._type}</b> should be displayed here.</p>
-        <pre>{JSON.stringify(block, null, 2)}</pre>
-      </>)
+      return (
+        <><p>Some component named <b>{block._type}</b> should be displayed here.</p>
+          <pre>{JSON.stringify(block, null, 2)}</pre>
+        </>
+      )
   }
 }
