@@ -8,7 +8,7 @@
     "dev:storybook": "start-storybook -p 6006 -s ./public",
     "build": "run-p -l build:*",
     "build:next": "next build",
-    "build:storybook": "build-storybook",
+    "build-storybook": "build-storybook",
     "codegen": "graphql-codegen -c codegen.yml",
     "start": "echo \"Info: run using 'npx next start'\"",
     "lint": "run-s -l lint:*",
