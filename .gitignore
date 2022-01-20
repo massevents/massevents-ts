@@ -42,7 +42,6 @@ yarn-error.log*
 .vercel
 
 # generate
-/frontend/generated/
 
 # vscode
 .vscode/
