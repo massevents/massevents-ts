@@ -3,13 +3,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  grid-column: 3 / -3;
+  grid-column: 2 / -2;
   overflow: hidden;
   padding-block-start: 1.6rem;
   padding-block-end: 1.6rem;
+  
+  @media (width >= 768px) {
+    grid-column: 3 / -3;
+  }
 
   & svg {
+    width: var(--grid-3x);
+    
+    @media (width >= 768px) {
     width: var(--grid-1x);
+  }
   }
 }
 
@@ -110,5 +118,58 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+.hamburgerIcon{
+  width: 2.4rem;
+  height: 2.4rem;
+  position: relative;
+  z-index: 99999;
+
+  & div {
+    height: 0.2rem;
+    background-color: var(--color-orange);
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+  }
+
+  @media (width >= 768px) {
+    display :none;
+  }
+}
+
+.hamburgerMenu{
+  @media (width < 768px) {
+    position: fixed;
+    inset: 0 0 0 0;
+    background-color: var(--color-orange);
+    z-index: 99;
+
+    & .linkList {
+      margin-block-start: 6rem;
+
+      & li {
+        width: 100%;
+        margin: 0;
+
+        & a {
+          padding: 2.5rem;
+          display: block;
+          color: var(--color-white);
+
+          &:before,
+          &:after {
+            content: none;
+          }
+
+          &.isActive{
+            background-color: rgba(255,255,255,0.1);
+          }
+        }
+      }
+    }
   }
 }
