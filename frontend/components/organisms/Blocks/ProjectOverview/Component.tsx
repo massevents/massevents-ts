@@ -80,7 +80,7 @@ export default function ProjectOverviewComponent (props: Props): JSX.Element {
 
         </div>
         <div className={style.buttonBar}>
-          {hasValue(props.block?.button_enable) && (
+          {hasValue(props.block?.button_enable) && props.block?.button_enable && (
             <Button as='link' href={props.block?.button_url?.slug?.current ?? ''} title={props.block?.button_label ?? ''}>
               {props.block?.button_label ?? ''}
             </Button>)}

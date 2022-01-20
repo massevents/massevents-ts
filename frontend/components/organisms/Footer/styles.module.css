@@ -134,7 +134,13 @@
   align-items: center;
   padding: 1rem 0;
   width: 100%;
-  grid-column: 3 / -3;
+  grid-column: 2 / -2;
+
+
+  @media (width >= 768px) {
+    grid-column: 3 / -3;
+
+  }
 
   & ul {
     margin: 0;
@@ -161,8 +167,16 @@
     position: relative;
     text-decoration: none;
     height: 100%;
+    padding-block-start: 2rem;
+    padding-block-end: 2rem;
     display: inline-flex;
     align-items: center;
+
+    @media (width >= 768px) {
+      padding-block-start: 0;
+      padding-block-end: 0;
+  
+    }
 
     &.normal {
       display: block;

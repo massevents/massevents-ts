@@ -22,13 +22,26 @@
 
 .news {
   grid-column: 1 / -1;
-  margin-block-end: 4rem;
   width: 100%;
   align-items: center;
+
+  &:not(:last-child) {
+    margin-block-end: 4rem;
+  }
+
+  @media (width >= 768px) {
+    margin-block-end: 4rem;
+  }
 }
 
 .image {
-  grid-column: span 3;
+  grid-column: 1 / -1;
+  margin-block-end: 3rem;
+
+  @media (width >= 768px) {
+    margin-block-end: 0;
+    grid-column: span 3;
+  }
 }
 
 .imageWrapper {
@@ -39,7 +52,11 @@
 }
 
 .content {
-  grid-column: span 9;
+  grid-column: 1 / -1;
+
+  @media (width >= 768px) {
+    grid-column: span 9;
+  }
 
   & h3 {
     font-family: Rubik, sans-serif;

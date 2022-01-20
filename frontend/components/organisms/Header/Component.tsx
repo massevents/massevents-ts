@@ -88,6 +88,13 @@ export default function HeaderComponent (props: Props): JSX.Element {
           )}
         </Styled.Video> */}
           </div>
+
+          <div className={style.titleWrapperMobile}>
+            <div className={style.title}>
+              <p>{props.header?.subtitle}</p>
+              <h1>{props.header?.title}</h1>
+            </div>
+          </div>
         </div>
       </section>
     )

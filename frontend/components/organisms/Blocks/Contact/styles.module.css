@@ -22,7 +22,13 @@
 }
 
 .leftCol {
-  grid-column: 1 / 7;
+  grid-column: 1 / -1;
+  margin-block-end: 3rem;
+
+  @media (width >= 768px) {
+    margin-block-end: 0;
+    grid-column: 1 / 7;
+  }
 
   & p {
     margin-block-end: 3.6rem;
@@ -40,7 +46,11 @@
 }
 
 .rightCol {
-  grid-column: 7 / -1;
+  grid-column: 1 / -1;
+
+  @media (width >= 768px) {
+    grid-column: 7 / -1;
+  }
 
   & > div {
     margin-block-end: 3.6rem;

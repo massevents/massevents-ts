@@ -23,13 +23,24 @@
 
 .project {
   grid-column: 1 / -1;
-  margin-block-end: 4rem;
   width: 100%;
   align-items: center;
+
+  &:not(:last-child) {
+    margin-block-end: 4rem;
+  }
+
+  @media (width >= 768px) {
+    margin-block-end: 4rem;
+  }
 }
 
 .projectPoster {
-  grid-column: span 3;
+  grid-column: span 6;
+
+  @media (width >= 768px) {
+    grid-column: span 3;
+  }
 }
 
 .imagePoster {
@@ -41,12 +52,18 @@
 }
 
 .image {
-  grid-column: span 7;
+  grid-column: 1 / -1;
   grid-row: 1;
+
+  @media (width >= 768px) {
+    grid-column: span 7;
+  }
 }
 
 .imageReversed {
-  grid-column: 6 / span 7;
+  @media (width >= 768px) {
+    grid-column: 6 / span 7;
+  }
 }
 
 .imageWrapper {
@@ -62,12 +79,21 @@
 }
 
 .contentReversed {
-  grid-column: 1 / span 5;
+  grid-column: 1 / -1;
+
+  @media (width >= 768px) {
+    grid-column: 1 / span 5;
+  }
 }
 
 .content {
-  grid-column: span 5;
-  grid-row: 1;
+  grid-column: 1 / -1;
+  grid-row: 2;
+
+  @media (width >= 768px) {
+    grid-column: span 5;
+    grid-row: 1;
+  }
 
   & h3 {
     font-family: Rubik, sans-serif;
@@ -87,8 +113,11 @@
 
 .buttonBar {
   grid-column: 1 / -1;
-  padding-block-start: 5rem;
-  padding-block-end: 5rem;
   justify-content: center;
   display: flex;
+  padding-block-end: 5rem;
+
+  @media (width >= 768px) {
+    padding-block-start: 5rem;
+  }
 }

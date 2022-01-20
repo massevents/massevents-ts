@@ -33,6 +33,11 @@
     z-index: 99;
     transform: none;
     pointer-events: none;
+    display: none;
+
+    @media (width >= 768px) {
+      display: block;
+    }
 
     & svg {
       pointer-events: none;
@@ -89,10 +94,32 @@
     color: var(--color-white);
     z-index: 97;
     width: 100%;
+
+    display: none;
+
+    @media (width >= 768px) {
+      display: block;
+    }
+
   }
 
   & .title {
     grid-column: 3 / 10;
+  }
+}
+
+.titleWrapperMobile{
+  grid-column: 2 / -2;
+  display: block;
+  margin-block-start: 2rem;
+
+  & h1{
+    font-size: 3.6rem;
+    font-weight: bold;
+  }
+  
+  @media (width >= 768px) {
+    display: none;
   }
 }
 

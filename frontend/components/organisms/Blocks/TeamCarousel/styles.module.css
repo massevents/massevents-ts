@@ -6,7 +6,12 @@
 }
 
 .col {
-  grid-column: span 6;
+  grid-column: 1 / -1;
+
+  @media (width >= 768px) {
+    grid-column: span 6;
+  }
+
   padding-block-start: 2rem;
   padding-block-end: 2rem;
 
