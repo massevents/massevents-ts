@@ -49,6 +49,8 @@ export const getStaticProps: GetStaticProps<{
     }
   }
 
+  console.log(project.allProject[0])
+
   return {
     props: {
       project: project.allProject,

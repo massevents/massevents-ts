@@ -16,7 +16,6 @@ interface Props {
 export default function NewsOverviewComponent (props: Props): JSX.Element {
   const news = props.block?.newsType === 'news' ? props.block?.news : props.news?.allNews
 
-  console.log(props)
   return (
     <section>
       <div className={gridStyle.grid}>

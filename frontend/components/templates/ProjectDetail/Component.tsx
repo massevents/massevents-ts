@@ -9,12 +9,14 @@ import InternalOrExternalLink from '@lib/link/Component'
 import SocialMedia from '@components/molecules/SocialMedia/Component'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
+import { hasValue } from '@misc/helpers'
 
 interface Props {
   project: Project
 }
 
 export default function ProjectDetail (props: Props): JSX.Element {
+  console.log(props)
   return (
     <section>
       <div className={gridStyle.grid}>
@@ -22,10 +24,10 @@ export default function ProjectDetail (props: Props): JSX.Element {
 
           <SocialMedia {...props} />
 
-          <div className={style.logoImg}>
-            {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
-            <Image src={props.project?.logo?.asset?.url ?? ''} alt={props.project?.logo?.asset?.altText ?? ''} objectFit='contain' objectPosition='center center' layout='intrinsic' width='120' height='60' />
-          </div>
+          {hasValue(props.project?.logo) && hasValue(props.project?.logo?.asset) && (
+            <div className={style.logoImg}>
+              <Image src={props.project?.logo?.asset?.url ?? ''} alt={props.project?.logo?.asset?.altText ?? ''} objectFit='contain' objectPosition='center center' layout='intrinsic' width='120' height='60' />
+            </div>)}
 
           {props.project?.projectContent?.contentType === 'custom' ? (
             <div className={style.col}>
@@ -84,7 +86,7 @@ export default function ProjectDetail (props: Props): JSX.Element {
 
                                   {partner?.sponsorType === 'text' && sponsor?.title}
 
-                                  {partner?.sponsorType !== 'text' && (
+                                  {hasValue(sponsor?.logo) && hasValue(sponsor?.logo?.asset) && partner?.sponsorType !== 'text' && (
                                     <div className={style.logoImg}>
                                       {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
                                       <Image src={sponsor?.logo?.asset?.url ?? ''} alt={sponsor?.logo?.asset?.altText ?? ''} objectFit='contain' objectPosition='center center' layout='intrinsic' width='120' height='60' />
