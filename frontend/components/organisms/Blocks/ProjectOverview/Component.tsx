@@ -13,7 +13,7 @@ interface Props {
   projects?: ProjectQuery | null
 }
 
-export default function ProjectOverviewComponent (props: Props): JSX.Element {
+export default function ProjectOverviewComponent(props: Props): JSX.Element {
   const projects = props.block?.projectsType === 'projects' ? props.block?.projects : props.projects?.allProject
 
   return (
@@ -44,9 +44,9 @@ export default function ProjectOverviewComponent (props: Props): JSX.Element {
               </div>
               <div className={clsx(style.content, idx % 2 === 0 && style.contentReversed)}>
 
-                <div className={style.logoImg}>
+                {hasValue(projectItem?.logo) && (<div className={style.logoImg}>
                   <Image src={projectItem?.logo?.asset?.url ?? ''} alt={projectItem?.logo?.asset?.altText ?? ''} objectFit='contain' objectPosition='center center' layout='intrinsic' width='120' height='60' />
-                </div>
+                </div>)}
                 <h3>{projectItem?.teaser?.title}</h3>
                 <ReactMarkdown>{projectItem?.teaser?.description ?? ''}</ReactMarkdown>
                 <Button as='link' href={projectItem?.slug?.current ?? ''} title={projectItem?.teaser?.title ?? ''}>
@@ -61,8 +61,8 @@ export default function ProjectOverviewComponent (props: Props): JSX.Element {
             <div key={`${idx}_projectBlock_Poster`} className={style.projectPoster}>
               <div className={style.imagePoster}>
                 <Image
-                  src={projectItem?.teaser?.imageSrc?.asset?.url ?? ''}
-                  alt={projectItem?.teaser?.imageSrc?.asset?.altText ?? ''}
+                  src={projectItem?.poster?.asset?.url ?? ''}
+                  alt={projectItem?.poster?.asset?.altText ?? ''}
                   objectFit='cover'
                   objectPosition='center center'
                   layout='fill'

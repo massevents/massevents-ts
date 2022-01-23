@@ -10,12 +10,15 @@ import SocialMedia from '@components/molecules/SocialMedia/Component'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { hasValue } from '@misc/helpers'
+import SwiperCore, { Autoplay } from 'swiper';
+
+SwiperCore.use([Autoplay]);
 
 interface Props {
   project: Project
 }
 
-export default function ProjectDetail (props: Props): JSX.Element {
+export default function ProjectDetail(props: Props): JSX.Element {
   console.log(props)
   return (
     <section>
@@ -50,6 +53,10 @@ export default function ProjectDetail (props: Props): JSX.Element {
                   <Swiper
                     spaceBetween={50}
                     slidesPerView={1}
+                    loop
+                    autoplay={{
+                      "delay": 3500
+                    }}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                   >
@@ -82,7 +89,7 @@ export default function ProjectDetail (props: Props): JSX.Element {
                             return (
                               <li key={`${idxtwo}_projectdetail_sponsor`} className={clsx(partner?.sponsorType === 'text' && style.textSponsor)}>
 
-                                <InternalOrExternalLink href={sponsor?.url ?? ''}>
+                                {hasValue(sponsor?.url) ? (<InternalOrExternalLink href={sponsor?.url ?? ''}>
 
                                   {partner?.sponsorType === 'text' && sponsor?.title}
 
@@ -92,7 +99,18 @@ export default function ProjectDetail (props: Props): JSX.Element {
                                       <Image src={sponsor?.logo?.asset?.url ?? ''} alt={sponsor?.logo?.asset?.altText ?? ''} objectFit='contain' objectPosition='center center' layout='intrinsic' width='120' height='60' />
                                     </div>)}
 
-                                </InternalOrExternalLink>
+                                </InternalOrExternalLink>) :
+                                  (<>
+
+                                    {partner?.sponsorType === 'text' && sponsor?.title}
+
+                                    {hasValue(sponsor?.logo) && hasValue(sponsor?.logo?.asset) && partner?.sponsorType !== 'text' && (
+                                      <div className={style.logoImg}>
+                                        {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
+                                        <Image src={sponsor?.logo?.asset?.url ?? ''} alt={sponsor?.logo?.asset?.altText ?? ''} objectFit='contain' objectPosition='center center' layout='intrinsic' width='120' height='60' />
+                                      </div>)}
+
+                                  </>)}
 
                               </li>
                             )
@@ -110,7 +128,7 @@ export default function ProjectDetail (props: Props): JSX.Element {
                   <ul className={style.sponsorsActivities}>
 
                     {props.project?.activiteiten?.activities?.map((activity, idx) => {
-                      return (<li key={`${idx}_activiteiten`}><p>{activity}</p></li>)
+                      return (<li key={`${idx}_activiteiten`} className={style.textSponsor}><p>{activity}</p></li>)
                     })}
                   </ul>
                 </div>

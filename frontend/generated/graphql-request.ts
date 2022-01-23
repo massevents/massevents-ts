@@ -2071,6 +2071,9 @@ export type ProjectTeaserFragment = (
   )>, logo?: Maybe<(
     { __typename?: 'Image' }
     & ImageFragment
+  )>, poster?: Maybe<(
+    { __typename?: 'Image' }
+    & ImageFragment
   )> }
 );
 
@@ -2440,6 +2443,9 @@ export const ProjectTeaserFragmentDoc = gql`
     ...Teaser
   }
   logo {
+    ...Image
+  }
+  poster {
     ...Image
   }
 }

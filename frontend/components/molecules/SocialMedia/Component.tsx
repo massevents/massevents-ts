@@ -9,7 +9,7 @@ interface Props {
   project: Project
 }
 
-export default function SocialMedia (props: Props): JSX.Element | null {
+export default function SocialMedia(props: Props): JSX.Element {
   return (props.project.socialMedia != null) ? (
     <div className={style.col}>
       <div className={style.line}>
@@ -45,5 +45,5 @@ export default function SocialMedia (props: Props): JSX.Element | null {
         )}
       </div>
     </div>
-  ) : null
+  ) : (<div className={style.emptyDiv}></div>)
 }

@@ -22,7 +22,6 @@ query AllProjects {
   }
 }
 
-
 fragment Project on Project {
   title
   slug {
@@ -100,6 +99,10 @@ fragment ProjectTeaser on Project {
   }
 
   logo {
+    ...Image
+  }
+
+  poster {
     ...Image
   }
 }

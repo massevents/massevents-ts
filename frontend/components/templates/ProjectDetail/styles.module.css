@@ -42,6 +42,10 @@
 
 .leftCol {
   grid-column: 1 / 7;
+
+  & p {
+    margin-block-end: 4rem;
+  }
 }
 
 .rightCol {
