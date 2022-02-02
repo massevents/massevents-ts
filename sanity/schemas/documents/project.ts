@@ -82,17 +82,21 @@ export default {
       title: "Social Media",
     },
     {
+      type: "projectOverview",
+      name: "previousEditions",
+      title: "Eerdere edities",
+      options: {
+        collapsible: true,
+        collapsed: true,
+        columns: 1
+      },
+    },
+    {
       type: "seo",
       name: "seo",
       title: "SEO",
       validation: (rule: any) => rule.required(),
-    },
-    {
-      type: "route",
-      name: "route",
-      title: "Misc.",
-      validation: (rule: any) => rule.required(),
-    },
+    }
   ],
 
   preview: {

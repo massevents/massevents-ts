@@ -12,32 +12,26 @@ export default {
         source: 'title',
         maxLength: 200, // will be ignored if slugify is set
         slugify: input => input
-                             .toLowerCase()
-                             .replace(/\s+/g, '-')
-                             .slice(0, 200)
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .slice(0, 200)
       }
-    }, 
+    },
     {
-        type: 'string',
-        name: 'title',
-        validation: (rule: any) => rule.required(),
+      type: 'string',
+      name: 'title',
+      validation: (rule: any) => rule.required(),
     },
 
     {
       type: 'header',
       name: 'header',
       validation: (rule: any) => rule.required(),
-  },
+    },
     {
       type: 'seo',
       name: 'seo',
       title: 'SEO',
-      validation: (rule: any) => rule.required(),
-    },
-    {
-      type: 'route',
-      name: 'route',
-      title: 'Misc.',
       validation: (rule: any) => rule.required(),
     },
     { type: 'blocks', name: 'blocks' },

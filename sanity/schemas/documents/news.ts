@@ -10,29 +10,29 @@ export default {
       type: 'slug',
       options: {
         source: 'title',
-        maxLength: 200, 
+        maxLength: 200,
         slugify: (input) => {
           const sluggified = input.toLowerCase().replace(/\s+/g, "-").slice(0, 200);
           return `nieuws/${sluggified}`
         }
       }
-    }, 
+    },
 
     {
       name: 'author',
       type: 'reference',
       title: 'Author',
-      to: [{type: 'teamMember'}]
+      to: [{ type: 'teamMember' }]
     },
     {
-        type: 'string',
-        name: 'title',
-        validation: (rule: any) => rule.required(),
+      type: 'string',
+      name: 'title',
+      validation: (rule: any) => rule.required(),
     },
     {
-        type: 'string',
-        name: 'subtitle',
-        validation: (rule: any) => rule.required(),
+      type: 'string',
+      name: 'subtitle',
+      validation: (rule: any) => rule.required(),
     },
     {
       type: "markdown",
@@ -40,14 +40,14 @@ export default {
       name: "description"
     },
     {
-        type: 'header',
-        name: 'header',
-        validation: (rule: any) => rule.required(),
+      type: 'header',
+      name: 'header',
+      validation: (rule: any) => rule.required(),
     },
     {
-        type: 'teaser',
-        name: 'Teaser',
-        validation: (rule: any) => rule.required(),
+      type: 'teaser',
+      name: 'Teaser',
+      validation: (rule: any) => rule.required(),
     },
     {
       name: 'photoAlbum',
@@ -61,13 +61,7 @@ export default {
       name: 'seo',
       title: 'SEO',
       validation: (rule: any) => rule.required(),
-    },
-    {
-      type: 'route',
-      name: 'route',
-      title: 'Misc.',
-      validation: (rule: any) => rule.required(),
-    },
+    }
   ],
 
   preview: {
