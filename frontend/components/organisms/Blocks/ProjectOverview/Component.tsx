@@ -13,7 +13,7 @@ interface Props {
   projects?: ProjectQuery | null
 }
 
-export default function ProjectOverviewComponent(props: Props): JSX.Element {
+export default function ProjectOverviewComponent (props: Props): JSX.Element {
   const projects = props.block?.projectsType === 'projects' ? props.block?.projects : props.projects?.allProject
 
   return (
@@ -31,24 +31,33 @@ export default function ProjectOverviewComponent(props: Props): JSX.Element {
 
               <div className={clsx(style.image, idx % 2 === 0 && style.imageReversed)}>
                 <div className={clsx(style.imageWrapper, idx % 2 === 0 && style.imageWrapperReversed)}>
-
-                  <Image
-                    src={projectItem?.teaser?.imageSrc?.asset?.url ?? ''}
-                    alt={projectItem?.teaser?.imageSrc?.asset?.altText ?? ''}
-                    objectFit='cover'
-                    objectPosition='center center'
-                    layout='fill'
-                  />
+                  <a href={projectItem?.slug?.current ?? ''}>
+                    <Image
+                      src={projectItem?.teaser?.imageSrc?.asset?.url ?? ''}
+                      alt={projectItem?.teaser?.imageSrc?.asset?.altText ?? ''}
+                      objectFit='cover'
+                      objectPosition='center center'
+                      layout='fill'
+                    />
+                  </a>
 
                 </div>
               </div>
               <div className={clsx(style.content, idx % 2 === 0 && style.contentReversed)}>
 
-                {hasValue(projectItem?.logo) && (<div className={style.logoImg}>
-                  <Image src={projectItem?.logo?.asset?.url ?? ''} alt={projectItem?.logo?.asset?.altText ?? ''} objectFit='contain' objectPosition='center center' layout='intrinsic' width='120' height='60' />
-                </div>)}
-                <h3>{projectItem?.teaser?.title}</h3>
-                <ReactMarkdown>{projectItem?.teaser?.description ?? ''}</ReactMarkdown>
+                {hasValue(projectItem?.logo) && (
+                  <a href={projectItem?.slug?.current ?? ''}>
+                    <div className={style.logoImg}>
+                      <Image src={projectItem?.logo?.asset?.url ?? ''} alt={projectItem?.logo?.asset?.altText ?? ''} objectFit='contain' objectPosition='center center' layout='intrinsic' width='120' height='60' />
+                    </div>
+                  </a>
+                )}
+
+                <a href={projectItem?.slug?.current ?? ''}>
+                  <h3>{projectItem?.teaser?.title}</h3>
+                  <ReactMarkdown className={style.projectLink}>{projectItem?.teaser?.description ?? ''}</ReactMarkdown>
+                </a>
+
                 <Button as='link' href={projectItem?.slug?.current ?? ''} title={projectItem?.teaser?.title ?? ''}>
                   Lees meer
                 </Button>
@@ -59,22 +68,22 @@ export default function ProjectOverviewComponent(props: Props): JSX.Element {
           {hasValue(projects) && props.block?.format === 'poster' && projects.length > 0 && projects?.map((projectItem, idx) => (
 
             <div key={`${idx}_projectBlock_Poster`} className={style.projectPoster}>
-              <div className={style.imagePoster}>
-                <Image
-                  src={projectItem?.poster?.asset?.url ?? ''}
-                  alt={projectItem?.poster?.asset?.altText ?? ''}
-                  objectFit='cover'
-                  objectPosition='center center'
-                  layout='fill'
-                />
-              </div>
-              <div className={style.content}>
+              <a href={projectItem?.slug?.current ?? ''}>
+                <div className={style.imagePoster}>
+                  <Image
+                    src={projectItem?.poster?.asset?.url ?? ''}
+                    alt={projectItem?.poster?.asset?.altText ?? ''}
+                    objectFit='cover'
+                    objectPosition='center center'
+                    layout='fill'
+                  />
+                </div>
+                <div className={style.content}>
 
-                <p><b>{projectItem?.teaser?.title}</b></p>
-                <Button as='link' href={projectItem?.slug?.current ?? ''} title={projectItem?.teaser?.title ?? ''}>
-                  Lees meer
-                </Button>
-              </div>
+                  <p><b>{projectItem?.teaser?.title}</b></p>
+
+                </div>
+              </a>
             </div>
           ))}
 

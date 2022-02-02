@@ -13,11 +13,31 @@ import Footer from '@components/organisms/Footer/Component'
 import Header from '@components/organisms/Header/Component'
 import { MainPage } from '@components/molecules/MainPage/Component'
 
+import * as ga from '@lib/ga'
+import { useRouter } from 'next/router'
+
 export default function App (props: AppProps & { siteConfig: SiteConfigQuery, hasHeader: boolean }): JSX.Element {
   usePageView()
   useScrollbarWidth()
   const settings = props.pageProps?.siteConfig?.SiteConfig
   const isLogoColor = props.pageProps?.header?.headerType === 'nothing' || props.pageProps?.header?.headerType === 'city'
+  const router = useRouter()
+
+  React.useEffect(() => {
+    const handleRouteChange = (url: string): void => {
+      ga.pageview(url)
+    }
+    // When the component is mounted, subscribe to router changes
+    // and log those page views
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
     <>
       <div className={stackStyles.stack}>

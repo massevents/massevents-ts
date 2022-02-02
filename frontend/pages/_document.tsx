@@ -19,6 +19,26 @@ export default class MyDocument extends Document {
           <PerformanceMark name='head-start' />
           <link rel='preconnect' href='https://imgur.com' />
 
+          <PerformanceMark name='analytics-start' />
+
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=252945389'
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '252945389', {
+              page_path: window.location.pathname,
+            });
+          `
+            }}
+          />
+          <PerformanceMark name='analytics-end' />
           <PerformanceMark name='gtm-start' />
           <GtmHead containerId={containerId} />
           <PerformanceMark name='gtm-end' />

@@ -9,7 +9,7 @@ query Project($slug: String) {
 query RecentProjects {
   allProject(limit: 3) {
     _key
-    _type
+    _type 
     ...ProjectTeaser
   }
 }
@@ -27,7 +27,6 @@ fragment Project on Project {
   slug {
     current
   }
-  description
   header {
     ...Header
   }
@@ -64,6 +63,10 @@ fragment Project on Project {
       }
     }
   }
+  previousEditions{
+    ...ProjectOverview
+  }
+
   socialMedia {
     facebookUrl
     instagramUrl

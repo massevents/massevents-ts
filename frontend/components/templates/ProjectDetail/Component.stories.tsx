@@ -6,7 +6,7 @@ export default {
     component: ProjectDetail,
 } as ComponentMeta<typeof ProjectDetail>
 
-const Template: ComponentStory<typeof ProjectDetail> = args => <ProjectDetail {...args}/>
+const Template: ComponentStory<typeof ProjectDetail> = args => <ProjectDetail {...args} />
 
 export const Default = Template.bind({});
 
@@ -18,7 +18,6 @@ Default.args = {
         "slug": {
             "current": "projecten/maak-jij-de-gouda750-hardcup"
         },
-        "description": "Maak jij het ontwerp voor de herbruikbare hardplastic festivalbeker voor Gouda750? Iedereen kan vanaf vandaag een eigen design aanleveren en meedoen aan de wedstrijd om het mooiste Gouda750 design te maken. Maak jij het beste design, dan komt jouw ontwerp op één van de hardplastic festivalbekers te staan in 2022!",
         "header": {
             "_key": null,
             "_type": "header",

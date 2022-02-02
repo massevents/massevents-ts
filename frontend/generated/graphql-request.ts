@@ -404,7 +404,6 @@ export type News = Document & {
   Teaser?: Maybe<Teaser>;
   photoAlbum?: Maybe<Array<Maybe<Image>>>;
   seo?: Maybe<Seo>;
-  route?: Maybe<Route>;
 };
 
 export type NewsFilter = {
@@ -424,7 +423,6 @@ export type NewsFilter = {
   header?: Maybe<HeaderFilter>;
   Teaser?: Maybe<TeaserFilter>;
   seo?: Maybe<SeoFilter>;
-  route?: Maybe<RouteFilter>;
 };
 
 export type NewsOverview = {
@@ -475,7 +473,6 @@ export type NewsSorting = {
   header?: Maybe<HeaderSorting>;
   Teaser?: Maybe<TeaserSorting>;
   seo?: Maybe<SeoSorting>;
-  route?: Maybe<RouteSorting>;
 };
 
 export type OneColOneTitle = {
@@ -520,7 +517,6 @@ export type Page = Document & {
   title?: Maybe<Scalars['String']>;
   header?: Maybe<Header>;
   seo?: Maybe<Seo>;
-  route?: Maybe<Route>;
   blocks?: Maybe<Array<Maybe<ContactOrImageSectionOrNewsOverviewOrOneColOneTitleOrProjectOverviewOrTeamCarouselOrTwoColQuoteOrTwoColTwoTitle>>>;
 };
 
@@ -537,7 +533,6 @@ export type PageFilter = {
   title?: Maybe<StringFilter>;
   header?: Maybe<HeaderFilter>;
   seo?: Maybe<SeoFilter>;
-  route?: Maybe<RouteFilter>;
 };
 
 export type PageSorting = {
@@ -551,7 +546,6 @@ export type PageSorting = {
   title?: Maybe<SortOrder>;
   header?: Maybe<HeaderSorting>;
   seo?: Maybe<SeoSorting>;
-  route?: Maybe<RouteSorting>;
 };
 
 export type PartnerGroup = {
@@ -595,8 +589,6 @@ export type Project = Document & {
   subtitle?: Maybe<Scalars['String']>;
   ticketshop?: Maybe<Ticketshop>;
   projectContent?: Maybe<ProjectContent>;
-  /** Body text */
-  description?: Maybe<Scalars['String']>;
   header?: Maybe<Header>;
   teaser?: Maybe<Teaser>;
   sponsors?: Maybe<Sponsors>;
@@ -605,8 +597,8 @@ export type Project = Document & {
   poster?: Maybe<Image>;
   photoAlbum?: Maybe<Array<Maybe<Image>>>;
   socialMedia?: Maybe<SocialMedia>;
+  previousEditions?: Maybe<ProjectOverview>;
   seo?: Maybe<Seo>;
-  route?: Maybe<Route>;
 };
 
 export type ProjectContent = {
@@ -657,7 +649,6 @@ export type ProjectFilter = {
   subtitle?: Maybe<StringFilter>;
   ticketshop?: Maybe<TicketshopFilter>;
   projectContent?: Maybe<ProjectContentFilter>;
-  description?: Maybe<StringFilter>;
   header?: Maybe<HeaderFilter>;
   teaser?: Maybe<TeaserFilter>;
   sponsors?: Maybe<SponsorsFilter>;
@@ -665,8 +656,8 @@ export type ProjectFilter = {
   logo?: Maybe<ImageFilter>;
   poster?: Maybe<ImageFilter>;
   socialMedia?: Maybe<SocialMediaFilter>;
+  previousEditions?: Maybe<ProjectOverviewFilter>;
   seo?: Maybe<SeoFilter>;
-  route?: Maybe<RouteFilter>;
 };
 
 export type ProjectOverview = {
@@ -718,7 +709,6 @@ export type ProjectSorting = {
   subtitle?: Maybe<SortOrder>;
   ticketshop?: Maybe<TicketshopSorting>;
   projectContent?: Maybe<ProjectContentSorting>;
-  description?: Maybe<SortOrder>;
   header?: Maybe<HeaderSorting>;
   teaser?: Maybe<TeaserSorting>;
   sponsors?: Maybe<SponsorsSorting>;
@@ -726,8 +716,8 @@ export type ProjectSorting = {
   logo?: Maybe<ImageSorting>;
   poster?: Maybe<ImageSorting>;
   socialMedia?: Maybe<SocialMediaSorting>;
+  previousEditions?: Maybe<ProjectOverviewSorting>;
   seo?: Maybe<SeoSorting>;
-  route?: Maybe<RouteSorting>;
 };
 
 export type Redirect = Document & {
@@ -2002,7 +1992,7 @@ export type AllProjectsQuery = (
 
 export type ProjectFragment = (
   { __typename?: 'Project' }
-  & Pick<Project, 'title' | 'description'>
+  & Pick<Project, 'title'>
   & { slug?: Maybe<(
     { __typename?: 'Slug' }
     & Pick<Slug, 'current'>
@@ -2038,6 +2028,9 @@ export type ProjectFragment = (
         & SponsorFragment
       )>>> }
     )>>> }
+  )>, previousEditions?: Maybe<(
+    { __typename?: 'ProjectOverview' }
+    & ProjectOverviewFragment
   )>, socialMedia?: Maybe<(
     { __typename?: 'SocialMedia' }
     & Pick<SocialMedia, 'facebookUrl' | 'instagramUrl' | 'linkedinUrl' | 'spotifyUrl' | 'websiteUrl'>
@@ -2542,7 +2535,6 @@ export const ProjectFragmentDoc = gql`
   slug {
     current
   }
-  description
   header {
     ...Header
   }
@@ -2579,6 +2571,9 @@ export const ProjectFragmentDoc = gql`
       }
     }
   }
+  previousEditions {
+    ...ProjectOverview
+  }
   socialMedia {
     facebookUrl
     instagramUrl
@@ -2600,6 +2595,7 @@ export const ProjectFragmentDoc = gql`
 ${SeoFragmentDoc}
 ${ImageFragmentDoc}
 ${SponsorFragmentDoc}
+${ProjectOverviewFragmentDoc}
 ${TeaserFragmentDoc}`;
 export const ProjectRouteFragmentDoc = gql`
     fragment ProjectRoute on Project {

@@ -33,6 +33,6 @@ export function getGTMKey (): string {
   return (
     process.env.GTM_KEY ??
     process.env.NEXT_PUBLIC_GTM_KEY ??
-    ''
+    'GTM-KJSTXKW'
   )
 }
