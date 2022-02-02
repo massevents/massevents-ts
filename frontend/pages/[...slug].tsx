@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Page (
+export default function Page(
   props: {
     page: PageQuery['allPage']
     siteConfig: SiteConfigQuery
@@ -114,7 +114,8 @@ export default function Page (
       <Metatags
         {...{
           title: pageData.seo?.title ?? '',
-          description: pageData.seo?.description ?? ''
+          description: pageData.seo?.description ?? '',
+          og_image: pageData.seo?.openGraphImage?.asset?.url ?? ''
         }}
       />
 

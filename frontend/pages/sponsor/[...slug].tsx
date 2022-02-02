@@ -57,10 +57,12 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Page (
-  props: { sponsor: SponsorQuery['allSponsor']
+export default function Page(
+  props: {
+    sponsor: SponsorQuery['allSponsor']
     siteConfig: SiteConfigQuery
-    header: Header}
+    header: Header
+  }
 ): JSX.Element {
   const router = useRouter()
 
@@ -74,7 +76,8 @@ export default function Page (
       <Metatags
         {...{
           title: pageData.seo?.title ?? '',
-          description: pageData.seo?.description ?? ''
+          description: pageData.seo?.description ?? '',
+          og_image: pageData.seo?.openGraphImage?.asset?.url ?? ''
         }}
       />
 

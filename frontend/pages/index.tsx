@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Homepage (props: {
+export default function Homepage(props: {
   homepage: PageQuery
   siteConfig: SiteConfigQuery
   header: Header
@@ -92,7 +92,8 @@ export default function Homepage (props: {
       <Metatags
         {...{
           title: pageData.seo?.title ?? '',
-          description: pageData.seo?.description ?? ''
+          description: pageData.seo?.description ?? '',
+          og_image: pageData.seo?.openGraphImage?.asset?.url ?? ''
         }}
       />
 
