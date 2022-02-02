@@ -16,7 +16,7 @@ interface Props {
   isLogoColor?: boolean
 }
 
-export default function MainNavigation (props: Props): JSX.Element {
+export default function MainNavigation(props: Props): JSX.Element {
   const [showMenu, setShowMenu] = React.useState<boolean | null>(null)
   const router = useRouter()
   const windowSize = useWindowSize()
@@ -118,7 +118,7 @@ export default function MainNavigation (props: Props): JSX.Element {
                     </li>
                   ) : (link != null) && link.linkType === 'internalLink' && (link.internalLink != null) ? (
                     <li key={link.internalLink?.slug?.current}>
-                      <InternalOrExternalLink className={checkActive(link) ? style.isActive : ''} href={`${process.env.NEXT_PUBLIC_WEBSITE_URL ?? ''}/${link.internalLink?.slug?.current ?? ''}`}>
+                      <InternalOrExternalLink className={checkActive(link) ? style.isActive : ''} href={`/${link.internalLink?.slug?.current ?? ''}`}>
                         {link.internalLink?.title ?? ''}
                       </InternalOrExternalLink>
                     </li>
