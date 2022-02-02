@@ -46,6 +46,75 @@
   & p {
     margin-block-end: 4rem;
   }
+
+  & p {
+    &:not(:last-child) {
+      margin-block-end: 3rem;
+    }
+  }
+
+  & h2 {
+    font-family: Rubik, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-orange);
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 1.2;
+
+    &:not(:last-child) {
+      margin-block-end: 3rem;
+    }
+  }
+
+  & h1 {
+    font-family: Rubik, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-black);
+    font-weight: bold;
+    font-size: 3.6rem;
+    line-height: 1.2;
+
+    &:not(:last-child) {
+      margin-block-end: 3rem;
+    }
+  }
+
+  & h3 {
+    font-family: Rubik, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-black);
+    font-weight: bold;
+    font-size: 2.1rem;
+    line-height: 1.2;
+
+    &:not(:last-child) {
+      margin-block-end: 3rem;
+    }
+  }
+
+  & h4 {
+    color: var(--color-black);
+    font-size: 1.8rem;
+    line-height: 1.2;
+
+    &:not(:last-child) {
+      margin-block-end: 3rem;
+    }
+  }
+
+  & h5 {
+    color: var(--color-black);
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.2;
+
+    &:not(:last-child) {
+      margin-block-end: 3rem;
+    }
+  }
 }
 
 .rightCol {
