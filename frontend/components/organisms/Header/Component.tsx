@@ -13,7 +13,7 @@ interface Props {
   header: Header
 }
 
-export default function HeaderComponent (props: Props): JSX.Element {
+export default function HeaderComponent(props: Props): JSX.Element {
   // const router = useRouter()
 
   const [loaded, setLoaded] = React.useState<boolean>(false)
@@ -44,7 +44,14 @@ export default function HeaderComponent (props: Props): JSX.Element {
                     url={videoUrl}
                     config={{
                       youtube: {
-                        playerVars: { showinfo: 0, controls: 0, disablekb: 1, modestbranding: 1, start: props.header.delay ?? 0 }
+                        playerVars: {
+                          showinfo: 0,
+                          controls: 0,
+                          disablekb: 1,
+                          autohide: 1,
+                          modestbranding: 1,
+                          start: props.header.delay ?? 0
+                        }
                       }
                     }}
                   />
