@@ -30,21 +30,24 @@ export default function NewsOverviewComponent (props: Props): JSX.Element {
             <div key={`${idx}`} className={clsx(gridStyle.grid, gridStyle.noPadding, style.news)}>
               <div className={style.image}>
                 <div className={style.imageWrapper}>
+                  <a href={newsItem?.slug?.current ?? ''}>
 
-                  <Image
-                    src={newsItem?.Teaser?.imageSrc?.asset?.url ?? ''}
-                    alt={newsItem?.Teaser?.imageSrc?.asset?.altText ?? ''}
-                    objectFit='cover'
-                    objectPosition='center center'
-                    layout='fill'
-                  />
-
+                    <Image
+                      src={newsItem?.Teaser?.imageSrc?.asset?.url ?? ''}
+                      alt={newsItem?.Teaser?.imageSrc?.asset?.altText ?? ''}
+                      objectFit='cover'
+                      objectPosition='center center'
+                      layout='fill'
+                    />
+                  </a>
                 </div>
               </div>
               <div className={style.content}>
+                <a href={newsItem?.slug?.current ?? ''}>
 
-                <h3>{newsItem?.Teaser?.title}</h3>
-                <ReactMarkdown>{newsItem?.Teaser?.description ?? ''}</ReactMarkdown>
+                  <h3>{newsItem?.Teaser?.title}</h3>
+                  <ReactMarkdown className={style.projectLink}>{newsItem?.Teaser?.description ?? ''}</ReactMarkdown>
+                </a>
                 <Button as='link' href={newsItem?.slug?.current ?? ''} title={newsItem?.Teaser?.title ?? ''}>
                   Lees meer
                 </Button>
@@ -57,7 +60,7 @@ export default function NewsOverviewComponent (props: Props): JSX.Element {
 
         <div className={style.buttonBar}>
           {hasValue(props.block?.button_enable) && props.block?.button_enable && (
-            <Button as='link' href={props.block?.button_url?.slug?.current ?? ''} title={props.block?.button_label ?? ''}>
+            <Button color='blank' as='link' href={props.block?.button_url?.slug?.current ?? ''} title={props.block?.button_label ?? ''}>
               {props.block?.button_label ?? ''}
             </Button>
           )}

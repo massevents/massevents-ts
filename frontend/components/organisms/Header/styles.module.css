@@ -14,13 +14,13 @@
   overflow: hidden;
 
   & .videoElement {
-    transform: scale(1.5);
+    transform: scale(1.8);
+    transform-origin: bottom center;
     bottom: 0;
     left: 0;
     pointer-events: none;
     position: absolute;
     right: 0;
-    top: 0;
     z-index: 1;
   }
 

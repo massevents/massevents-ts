@@ -49,9 +49,7 @@
 
   & p {
     margin-block-end: 4rem;
-  }
 
-  & p {
     &:not(:last-child) {
       margin-block-end: 3rem;
     }

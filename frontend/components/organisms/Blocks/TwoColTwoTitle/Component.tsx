@@ -23,11 +23,10 @@ export default function TwoColTwoTitleBlock (props: Props): JSX.Element {
             <p>{props.block.rightSubtitle}</p>
             <h2>{props.block.rightTitle}</h2>
           </div>
-          <div className={style.leftCol}>
-
+          <div className={clsx(style.leftCol, style.leftColContent)}>
             <ReactMarkdown>{props.block.leftCol ?? ''}</ReactMarkdown>
           </div>
-          <div className={style.rightCol}>
+          <div className={clsx(style.rightCol, style.rightColContent)}>
             <ReactMarkdown>{props.block.rightCol ?? ''}</ReactMarkdown>
           </div>
         </div>

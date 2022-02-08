@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Page(
+export default function Page (
   props: {
     project: ProjectQuery['allProject']
     siteConfig: SiteConfigQuery

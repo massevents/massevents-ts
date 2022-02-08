@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Homepage(props: {
+export default function Homepage (props: {
   homepage: PageQuery
   siteConfig: SiteConfigQuery
   header: Header

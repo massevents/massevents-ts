@@ -12,8 +12,8 @@ interface ButtonProps {
 }
 
 type Props =
-| ({ as: 'link' } & ButtonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>)
-| ({ as: 'button' } & ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>)
+  | ({ as: 'link' } & ButtonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>)
+  | ({ as: 'button' } & ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>)
 
 export function Button (props: Props): JSX.Element {
   const { color = 'pink', children, ...componentProps } = props

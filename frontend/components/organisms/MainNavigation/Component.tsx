@@ -16,7 +16,7 @@ interface Props {
   isLogoColor?: boolean
 }
 
-export default function MainNavigation(props: Props): JSX.Element {
+export default function MainNavigation (props: Props): JSX.Element {
   const [showMenu, setShowMenu] = React.useState<boolean | null>(null)
   const router = useRouter()
   const windowSize = useWindowSize()

@@ -54,7 +54,7 @@ export default function ProjectOverviewComponent (props: Props): JSX.Element {
                 )}
 
                 <a href={projectItem?.slug?.current ?? ''}>
-                  <h3>{projectItem?.teaser?.title}</h3>
+                  <h3 className={clsx(!hasValue(projectItem?.logo) && style.titleMargin)}>{projectItem?.teaser?.title}</h3>
                   <ReactMarkdown className={style.projectLink}>{projectItem?.teaser?.description ?? ''}</ReactMarkdown>
                 </a>
 
@@ -88,12 +88,13 @@ export default function ProjectOverviewComponent (props: Props): JSX.Element {
           ))}
 
         </div>
-        <div className={style.buttonBar}>
-          {hasValue(props.block?.button_enable) && props.block?.button_enable && (
-            <Button as='link' href={props.block?.button_url?.slug?.current ?? ''} title={props.block?.button_label ?? ''}>
+        {hasValue(props.block?.button_enable) && props.block?.button_enable && (
+          <div className={style.buttonBar}>
+            <Button color='blank' as='link' href={props.block?.button_url?.slug?.current ?? ''} title={props.block?.button_label ?? ''}>
               {props.block?.button_label ?? ''}
-            </Button>)}
-        </div>
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   )

@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps<{
   }
 }
 
-export default function Page(
+export default function Page (
   props: {
     team: TeamMemberQuery['allTeamMember']
     siteConfig: SiteConfigQuery
