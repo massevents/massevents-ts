@@ -19,7 +19,7 @@ interface Props {
   project: Project
 }
 
-export default function ProjectDetail (props: Props): JSX.Element {
+export default function ProjectDetail(props: Props): JSX.Element {
   console.log(props)
   return (
     <section>
@@ -50,27 +50,33 @@ export default function ProjectDetail (props: Props): JSX.Element {
                 <ReactMarkdown>{props.project?.projectContent?.massEvents ?? ''}</ReactMarkdown>
               </div>
               <div className={style.rightCol}>
-                <div className={style.album}>
-                  <Swiper
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    loop
-                    autoplay={{
-                      delay: 3500
-                    }}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
-                  >
-                    {props.project.photoAlbum?.map(photo => {
-                      return (
-                        <SwiperSlide key={`${photo?.asset?.url ?? ''}_photoalbum_projectoverview`}>
-                          <Image src={photo?.asset?.url ?? ''} alt={photo?.asset?.altText ?? ''} objectFit='cover' objectPosition='center center' layout='responsive' width='300' height='200' />
-                        </SwiperSlide>
-                      )
-                    })}
-                  </Swiper>
-                  <div className={style.albumSwipe}>
-                    <img src='/images/swipe.svg' />
+
+                <div className={style.albumWrapper}>
+                  <div className={style.album}>
+                    <Swiper
+                      spaceBetween={50}
+                      slidesPerView={1}
+                      loop
+                      autoplay={{
+                        delay: 3500
+                      }}
+                      onSlideChange={() => console.log('slide change')}
+                      onSwiper={(swiper) => console.log(swiper)}
+                    >
+                      {props.project.photoAlbum?.map(photo => {
+                        return (
+                          <SwiperSlide
+                            key={`${photo?.asset?.url ?? ''}_photoalbum_projectoverview`}
+                            style={{ width: 'auto' }}
+                          >
+                            <Image src={photo?.asset?.url ?? ''} alt={photo?.asset?.altText ?? ''} objectFit='cover' objectPosition='center center' layout='responsive' width='300' height='200' />
+                          </SwiperSlide>
+                        )
+                      })}
+                    </Swiper>
+                    <div className={style.albumSwipe}>
+                      <img src='/images/swipe.svg' />
+                    </div>
                   </div>
                 </div>
               </div>

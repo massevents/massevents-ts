@@ -8,7 +8,7 @@ export default {
       name: "slug",
       type: "slug",
       options: {
-        source: "title",
+        source: "header.title",
         maxLength: 200,
         slugify: (input) => {
           const sluggified = input
@@ -18,16 +18,6 @@ export default {
           return `projecten/${sluggified}`;
         },
       },
-    },
-    {
-      type: "string",
-      name: "title",
-      validation: (rule: any) => rule.required(),
-    },
-    {
-      type: "string",
-      name: "subtitle",
-      validation: (rule: any) => rule.required(),
     },
     {
       type: "ticketshop",
@@ -101,7 +91,7 @@ export default {
 
   preview: {
     select: {
-      title: "title",
+      title: "header.title",
       media: "seo.openGraphImage",
     },
   },

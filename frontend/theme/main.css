@@ -77,3 +77,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.swiper-wrapper .swiper-slide {
+  width: auto;
+}
